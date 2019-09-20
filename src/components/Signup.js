@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 
 const Signup = () => {
   return (
-    <h3>Sign up please</h3>
+
+    <Fragment>
+      <h2>Hi there! Create a new account:</h2>
+    
+    </Fragment>        
   )
 }
 
