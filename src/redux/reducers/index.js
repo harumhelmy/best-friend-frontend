@@ -1,12 +1,16 @@
-const initialState = {
-  currentUser: {}
+import { combineReducers } from 'redux'
+
+const userReducer = (state = {}, action) => {
+  switch(action.type) {
+    case "FETCHED_USER":
+    return action.payload 
+    default:
+      return state
+  }
 }
 
-const userReducer = (oldState = initialState, action) => {
-  console.log(oldState, 'inside the reducer', action)
-  return oldState
-}
+const rootReducer = combineReducers({
+  currentUser: userReducer
+})
 
-// combineReducer
-
-export default userReducer 
+export default rootReducer  
