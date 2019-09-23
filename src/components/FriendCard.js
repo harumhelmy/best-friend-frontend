@@ -1,8 +1,8 @@
 import React from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router-dom' // will have to figure this out
 
 const FriendCard = (props) => {
+
   return (
     <div className='card'>
       <header className='card-header'>
@@ -15,11 +15,5 @@ const FriendCard = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentUser: state.currentUser,
-    friends: state.friends
-  }
-}
 
-export default connect(mapStateToProps)(FriendCard)
+export default FriendCard
