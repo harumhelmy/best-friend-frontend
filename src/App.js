@@ -13,20 +13,20 @@ import './App.sass'
 class App extends React.Component {
 
   componentDidMount(){
-    console.log('component did indeed mount')
     this.props.fetchingUser()
   }
   
   render(){
+
     return (
       <Fragment>
         <Navbar />
           <Switch> {/* this very likely needs to be under the component that needs to be rendered at all times */}
-        
+            {/* {allFriends} */}
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/login' component={Login}/>
             <Route exact path='/home' component={Home}/>
-            <Route exact path='/friends' render={ () => <FriendsContainer /> } /> 
+            <Route exact path='/friends' component={FriendsContainer} /> 
             {/* <Route exact path='/friends/:id' render={ (props) => {
 
               }}
@@ -39,9 +39,15 @@ class App extends React.Component {
   } 
 }
 
+// const mapStateToProps = (state) => {
+//   return {
+//     friends: state.currentUser.friends
+//   }
+// }
+
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchingUser: () => { dispatch( fetchingUser() ) }
+    fetchingUser: () => { dispatch(fetchingUser()) }
   }
 }
 
