@@ -25,4 +25,32 @@ function fetchingFriends(){
   }
 }
 
-export { fetchingUser, fetchingFriends } 
+function addingNewFriend(data){
+  console.log('hi')
+  return (dispatch) => {
+    fetch('http://localhost:3000/friends', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: data.name,
+        pronouns: data.pronouns,
+        appreciation: data.appreciation,
+        user_id: data.userId
+      })
+    }).then(res => res.json())
+    .then( friend => {
+      dispatch(addedFriend(data))
+    })
+  }
+}
+
+function addedFriend({name, pronouns, appreciation, userId}){
+  return {
+    type: 'ADDED_FRIEND',
+    payload: { name, pronouns, appreciation, userId }
+  }
+}
+
+export { fetchingUser, fetchingFriends, addingNewFriend } 

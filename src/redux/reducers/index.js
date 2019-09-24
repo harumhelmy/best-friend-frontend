@@ -13,6 +13,8 @@ const friendsReducer = (state = [], action) => {
     switch(action.type) {
     case "FETCHED_FRIENDS":
       return action.payload
+    case "ADDED_FRIEND":
+      return [...state, action.payload]
     default: 
       return state 
   }
