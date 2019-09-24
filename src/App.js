@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Navbar from './components/Navbar'
 import Home from './containers/Home'
 import Signup from './components/Signup'
+import About from './components/About'
 import FriendsContainer from './containers/FriendsContainer'
 import { connect } from 'react-redux'
 import { fetchingUser } from './redux/actions/index'
@@ -27,6 +28,7 @@ class App extends React.Component {
             <Route exact path='/login' component={Login}/>
             <Route exact path='/home' component={Home}/>
             <Route exact path='/friends' component={FriendsContainer} /> 
+            <Route exact path='/about' component={About}/>
             {/* <Route exact path='/friends/:id' render={ (props) => {
 
               }}
