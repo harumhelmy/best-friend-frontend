@@ -1,7 +1,6 @@
 import React from 'react';
 import FriendCard from '../components/FriendCard'
 import { connect } from 'react-redux'
-// import { fetchingFriends } from '../redux/actions/index'
 
 class FriendsContainer extends React.Component{
   
@@ -25,10 +24,5 @@ const mapStateToProps = (state) => {
     friends: state.friends
   }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//   }
-// }
 
 export default connect(mapStateToProps)(FriendsContainer)
