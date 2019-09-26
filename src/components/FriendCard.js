@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom' // will have to figure this out
-import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 const FriendCard = (props) => {
 
@@ -18,13 +17,4 @@ const FriendCard = (props) => {
   )
 }
 
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     friend: state.friends.find(
-//       friend => friend.id === ownProps.match.params.friendId
-//     )
-//   }
-// }
-
-// export default withRouter(connect(mapStateToProps)(FriendCard))
 export default FriendCard

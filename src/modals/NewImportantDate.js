@@ -43,6 +43,7 @@ class NewImportantDate extends Component {
     return(
       <Fragment>
         <form onSubmit={this.onSubmit}>
+          
           <label>name</label>
           <input className='input'
             type="text" 
@@ -51,21 +52,25 @@ class NewImportantDate extends Component {
             value={this.state.name}
             onChange={this.handleChange}
           />
+
           <label>date</label>
           <DatePicker name="date"
             selected={this.state.date}
             onChange={this.handleDateChange}
             // onClickOutside may be useful here 
           />
+
           <label>note</label>
           <textarea className="textarea"
             placeholder="any notes on this date?"
             name="note"
             onChange={this.handleChange}
           />
+
           <button type='submit' 
             className='ui button'> Submit
           </button>
+          
         </form> 
       </Fragment>
     )

@@ -1,22 +1,18 @@
 import React from 'react';
 import FriendCard from '../components/FriendCard'
 import { connect } from 'react-redux'
-import { fetchingFriends } from '../redux/actions/index'
+// import { fetchingFriends } from '../redux/actions/index'
 
 class FriendsContainer extends React.Component{
-
-  componentDidMount(){
-    this.props.fetchingFriends()
-  }
-
+  
   render(){
     return(
-      <div> 
+      <div className='container'> 
         <h2>this is the friends index!</h2>
 
         <h3>friend list:</h3>
         {
-          this.props.friends.map( friend => <div className='column is-4'> <FriendCard friend={friend} /> </div>)
+          this.props.friends.map( friend => <FriendCard key={`friend-${friend.id}`} friend={friend} /> )
         }
       </div>
     )
@@ -30,10 +26,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchingFriends: () => { dispatch(fetchingFriends()) }
-  }
-}
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//   }
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer)
+export default connect(mapStateToProps)(FriendsContainer)

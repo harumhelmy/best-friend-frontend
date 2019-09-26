@@ -54,23 +54,12 @@ const interactionsReducer = (state = [], action) => {
   }
 }
 
-
-// const selectedFriendReducer = (state = {}, action) => {
-//   switch(action.type){
-//     case "SELECTED_FRIEND":
-//      return action.payload
-//     default:
-//       return state
-//   }
-// }
-
 const rootReducer = combineReducers({
   currentUser: userReducer,
   friends: friendsReducer,
   importantDates: importantDatesReducer,
   notes: notesReducer,
   interactions: interactionsReducer,
-  // selectedFriend: selectedFriendReducer
 })
 
 export default rootReducer  
