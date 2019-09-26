@@ -82,4 +82,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewFriendForm)
-// export default NewFriendForm
