@@ -60,7 +60,9 @@ class NewFriendForm extends React.Component {
             value={this.state.appreciation}
             onChange={this.handleChange}
           />
-        <button type='submit' className='ui button'>Submit</button>
+        <button type='submit' 
+          className='ui button'> Submit
+        </button>
     </form>
   </Fragment>
     )

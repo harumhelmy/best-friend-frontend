@@ -2,6 +2,7 @@ import React, {Fragment, Component} from 'react';
 import DatePicker from 'react-datepicker'
 import { connect } from 'react-redux'
 import "react-datepicker/dist/react-datepicker.css";  
+import { addingNewImportantDate } from '../redux/actions'
 
 class NewImportantDate extends Component {
 
@@ -10,8 +11,7 @@ class NewImportantDate extends Component {
     this.state = {
       name: '',
       date: new Date(),
-      note: '',
-
+      note: ''
     }
   }
 
@@ -27,12 +27,13 @@ class NewImportantDate extends Component {
     })
   }
 
-  onSubmit = () => {
+  onSubmit = (event) => {
+    event.preventDefault()
     const data = {
       name: this.state.name,
       date: this.state.date,
       user_id: this.props.currentUser.id,
-      friend_id: 9, // needs a selected friend prop,
+      friend_id: 6, // needs a selected friend prop,
       note: this.state.note
     }
     this.props.addingNewImportantDate(data)
@@ -41,23 +42,31 @@ class NewImportantDate extends Component {
   render(){
     return(
       <Fragment>
-        <form>
+        <form onSubmit={this.onSubmit}>
           <label>name</label>
           <input className='input'
             type="text" 
             name="name"
-            placeholder="name" 
+            placeholder="what's happening?" 
             value={this.state.name}
             onChange={this.handleChange}
           />
           <label>date</label>
           <DatePicker name="date"
             selected={this.state.date}
-            onChange={this.handleChange}
+            onChange={this.handleDateChange}
             // onClickOutside may be useful here 
           />
-
-        </form>
+          <label>note</label>
+          <textarea className="textarea"
+            placeholder="any notes on this date?"
+            name="note"
+            onChange={this.handleChange}
+          />
+          <button type='submit' 
+            className='ui button'> Submit
+          </button>
+        </form> 
       </Fragment>
     )
   }

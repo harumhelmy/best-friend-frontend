@@ -30,10 +30,20 @@ const importantDatesReducer = (state = [], action) => {
   }
 }
 
+const notesReducer = (state = [], action) => {
+  switch(action.type){
+    case "ADDED_NOTE":
+      return action.payload
+    default: 
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: userReducer,
   friends: friendsReducer,
-  importantDates: importantDatesReducer
+  importantDates: importantDatesReducer,
+  notes: notesReducer
 })
 
 export default rootReducer  

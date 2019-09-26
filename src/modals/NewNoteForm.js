@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
 import { connect } from 'react-redux'
+import { addingNewNote } from '../redux/actions'
 
 class NewNoteForm extends React.Component {
 

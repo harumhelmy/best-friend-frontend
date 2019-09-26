@@ -40,7 +40,7 @@ function addingNewFriend(data){
       })
     }).then(res => res.json())
     .then(friend => {
-      dispatch(addedFriend(data))
+      dispatch(addedFriend(friend))
     })
   }
 }
@@ -54,19 +54,50 @@ function addedFriend({name, pronouns, appreciation, userId}){
 
 // important date actions 
 function addingNewImportantDate(data){
+  debugger
   return (dispatch) => {
-    fetch('http://localhost:3000/important_dates'), {
+    fetch('http://localhost:3000/important_dates', {
       method: 'POST',
       headers: {
-        'content-type': 'application-json'
+        'content-type': 'application/json'
       },
       body: JSON.stringify({
-        
+        name: data.name,
+        date: data.date, 
+        user_id: data.userId,
+        note: data.note,
+        friend_id: 6
       })
-    }
+    }).then( res => res.json())
+    .then( date => console.log(date))
   }
 }
 
 
+// note actions 
+function addingNewNote(data){
+  return (dispatch) => {
+    fetch('http://localhost:3000/notes', {
+    method: 'POST',
+    headers: {
+      'content-type': 'application-json'
+    },
+    body: JSON.stringify({
+      content: data.content,
+      user_id: data.userId,
+      friend_id: 6 //TODO: dynamic render
+    })
+  })
+  .then( res => res.json())
+  .then( note => dispatch(addedNote(note) ))
+  }
+}
 
-export { fetchingUser, fetchingFriends, addingNewFriend, addingNewImportantDate } 
+function addedNote({content, user_id, friend_id}){
+  return {
+    type: 'NOTE_ADDED',
+    payload: { content, user_id, friend_id }
+  }
+}
+
+export { fetchingUser, fetchingFriends, addingNewFriend, addingNewImportantDate, addingNewNote } 
