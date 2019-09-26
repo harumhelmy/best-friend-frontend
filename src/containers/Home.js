@@ -11,8 +11,11 @@ const Home = (props) => {
       <div>
         <h3>welcome to bestFriend, {props.currentUser.username}! this your home page. </h3>
         <NewFriendForm />
+        <br />
         <NewImportantDate />
+        <br />
         <NewNoteForm />
+        <br />
         <NewInteractionForm />
       </div>
     )

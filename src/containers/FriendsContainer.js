@@ -13,6 +13,7 @@ class FriendsContainer extends React.Component{
     return(
       <div> 
         <h2>this is the friends index!</h2>
+
         <h3>friend list:</h3>
         {
           this.props.friends.map( friend => <div className='column is-4'> <FriendCard friend={friend} /> </div>)
@@ -34,10 +35,5 @@ const mapDispatchToProps = (dispatch) => {
     fetchingFriends: () => { dispatch(fetchingFriends()) }
   }
 }
-
-// when setting up state, set initial value!!!!!!!
-// one suggestion is to conditionally map
-// life will be easier to un-nest from the user state 
-// pull it out of the user state [].map( )
 
 export default connect(mapStateToProps, mapDispatchToProps)(FriendsContainer)

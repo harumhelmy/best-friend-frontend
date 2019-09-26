@@ -30,7 +30,7 @@ class App extends React.Component {
             <Route exact path='/home' component={Home}/>
             <Route exact path='/friends' component={FriendsContainer} /> 
             <Route exact path='/about' component={About}/>
-            <Route exact path='/friends/:friendId' render={FriendPage} />
+            <Route exact path='/friends/:friendId' component={FriendPage} />
             <Route exact path='/logout' />
           </Switch>
       </Fragment>
