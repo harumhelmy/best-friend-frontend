@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import NewFriendForm from '../modals/NewFriendForm'
 import NewImportantDate from '../modals/NewImportantDate'
 import NewNoteForm from '../modals/NewNoteForm'
+import NewInteractionForm from '../modals/NewInteractionForm'
 
 const Home = (props) => {
   
@@ -12,6 +13,7 @@ const Home = (props) => {
         <NewFriendForm />
         <NewImportantDate />
         <NewNoteForm />
+        <NewInteractionForm />
       </div>
     )
 }

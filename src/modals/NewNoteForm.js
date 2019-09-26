@@ -21,8 +21,8 @@ class NewNoteForm extends React.Component {
     event.preventDefault()
     const data = {
       userId: this.props.currentUser.id,
-      content: this.state.content
-      // selectedFriend 
+      content: this.state.content,
+      friendId: 6
     }
     this.props.addingNewNote(data)
   }
@@ -30,7 +30,7 @@ class NewNoteForm extends React.Component {
   render(){
     return (
       <Fragment>
-        <form>
+        <form onSubmit={this.onSubmit}>
         <label>got a note about your friend?</label>
           <textarea className='textarea'
             type="text" 
@@ -39,6 +39,9 @@ class NewNoteForm extends React.Component {
             value={this.state.content}
             onChange={this.handleChange}
           />
+          <button type='submit'
+            className='ui button'> Submit
+          </button>
         </form>
       </Fragment>
     )
@@ -54,7 +57,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addingNewNote: (data) => { dispatch( addingNewNote(data))}
+    addingNewNote: (data) => { dispatch( addingNewNote(data) ) }
   }
 }
 

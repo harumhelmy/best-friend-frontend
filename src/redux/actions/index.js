@@ -54,7 +54,6 @@ function addedFriend({name, pronouns, appreciation, userId}){
 
 // important date actions 
 function addingNewImportantDate(data){
-  debugger
   return (dispatch) => {
     fetch('http://localhost:3000/important_dates', {
       method: 'POST',
@@ -66,13 +65,20 @@ function addingNewImportantDate(data){
         date: data.date, 
         user_id: data.userId,
         note: data.note,
-        friend_id: 6
+        friend_id: data.friendId,
+        // reminder: data.reminder
       })
     }).then( res => res.json())
-    .then( date => console.log(date))
+    .then( date => dispatch(addedImportantDate(date)) )
   }
 }
 
+function addedImportantDate( { name, date, note, user_id, friend_id } ){
+  return {
+    type: "ADDED_IMPORTANT_DATE",
+    payload: { name, date, note, user_id, friend_id }
+  }
+}
 
 // note actions 
 function addingNewNote(data){
@@ -80,12 +86,12 @@ function addingNewNote(data){
     fetch('http://localhost:3000/notes', {
     method: 'POST',
     headers: {
-      'content-type': 'application-json'
+      'content-type': 'application/json'
     },
     body: JSON.stringify({
       content: data.content,
       user_id: data.userId,
-      friend_id: 6 //TODO: dynamic render
+      friend_id: data.friendId //TODO: dynamic render
     })
   })
   .then( res => res.json())
@@ -95,9 +101,36 @@ function addingNewNote(data){
 
 function addedNote({content, user_id, friend_id}){
   return {
-    type: 'NOTE_ADDED',
+    type: 'ADDED_NOTE',
     payload: { content, user_id, friend_id }
+  }
+} 
+
+// interaction actions 
+function addingNewInteraction(data) {
+  return (dispatch) => {
+    fetch('http://localhost:3000/interactions', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        date: data.date,
+        note: data.note,
+        user_id: data.userId,
+        friend_id: data.friendId
+      })
+    })
+    .then( res => res.json())
+    .then( interaction => dispatch(addedInteraction(interaction)))
   }
 }
 
-export { fetchingUser, fetchingFriends, addingNewFriend, addingNewImportantDate, addingNewNote } 
+function addedInteraction({date, note, user_id, friend_id}) {
+  return {
+  type: 'ADDED_INTERACTION',
+  payload: {date, note, user_id, friend_id}
+  }
+}
+
+export { fetchingUser, fetchingFriends, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction } 

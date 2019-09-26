@@ -2,6 +2,7 @@ import React from 'react';
 import DatePicker from 'react-datepicker'
 import { connect } from 'react-redux'
 import "react-datepicker/dist/react-datepicker.css";  
+import { addingNewInteraction } from '../redux/actions'
 
 
 class NewInteractionForm extends React.Component {
@@ -31,14 +32,15 @@ class NewInteractionForm extends React.Component {
     const data = {
       date: this.state.date,
       note: this.state.note,
-      userId: this.props.currentUser.id
-      // need friend prop
+      userId: this.props.currentUser.id,
+      friendId: 6
     }
+    this.props.addingNewInteraction(data)
   }
 
   render (){
     return (
-      <form>
+      <form onSubmit={this.onSubmit}>
         <DatePicker name="date"
           selected={this.state.date}
           onChange={this.handleDateChange}
@@ -51,6 +53,9 @@ class NewInteractionForm extends React.Component {
             value={this.state.note}
             onChange={this.handleChange}
           />
+        <button type='submit'
+          className='ui button'>Submit     
+        </button>
       </form>
     )
   }
