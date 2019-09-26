@@ -20,9 +20,20 @@ const friendsReducer = (state = [], action) => {
   }
 }
 
+// might need all important dates here 
+const importantDatesReducer = (state = [], action) => {
+  switch(action.type){
+    case "ADDED_IMPORTANT_DATE":
+      return action.payload
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: userReducer,
-  friends: friendsReducer
+  friends: friendsReducer,
+  importantDates: importantDatesReducer
 })
 
 export default rootReducer  

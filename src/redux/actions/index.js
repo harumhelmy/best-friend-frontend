@@ -26,7 +26,6 @@ function fetchingFriends(){
 }
 
 function addingNewFriend(data){
-  console.log('hi')
   return (dispatch) => {
     fetch('http://localhost:3000/friends', {
       method: 'POST',
@@ -40,7 +39,7 @@ function addingNewFriend(data){
         user_id: data.userId
       })
     }).then(res => res.json())
-    .then( friend => {
+    .then(friend => {
       dispatch(addedFriend(data))
     })
   }
@@ -53,4 +52,21 @@ function addedFriend({name, pronouns, appreciation, userId}){
   }
 }
 
-export { fetchingUser, fetchingFriends, addingNewFriend } 
+// important date actions 
+function addingNewImportantDate(data){
+  return (dispatch) => {
+    fetch('http://localhost:3000/important_dates'), {
+      method: 'POST',
+      headers: {
+        'content-type': 'application-json'
+      },
+      body: JSON.stringify({
+        
+      })
+    }
+  }
+}
+
+
+
+export { fetchingUser, fetchingFriends, addingNewFriend, addingNewImportantDate } 

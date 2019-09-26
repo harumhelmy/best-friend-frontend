@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react'
 import { connect } from 'react-redux'
 import { addingNewFriend } from '../redux/actions/index'
+import { Redirect } from 'react-router-dom'
 
 class NewFriendForm extends React.Component {
 
@@ -14,7 +15,6 @@ class NewFriendForm extends React.Component {
   }
 
   handleChange = (event) => {
-    console.log(event.target.name)
     this.setState({
       [event.target.name]: event.target.value
     })
@@ -34,7 +34,7 @@ class NewFriendForm extends React.Component {
   render() {
     return (
    <Fragment>
-      <h3>add a new friend</h3>
+    <h3>add a new friend</h3>
      <form onSubmit={this.onSubmit}>
           <label>name</label>
           <input className='input'
@@ -75,7 +75,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addingNewFriend: (data)=> { dispatch( addingNewFriend(data) ) }
+    addingNewFriend: (data) => { dispatch( addingNewFriend(data) ) }
   }
 }
 
