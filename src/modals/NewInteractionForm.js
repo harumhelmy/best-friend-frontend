@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import DatePicker from 'react-datepicker'
 import { connect } from 'react-redux'
 import "react-datepicker/dist/react-datepicker.css";  
@@ -40,6 +40,8 @@ class NewInteractionForm extends React.Component {
 
   render (){
     return (
+    <Fragment>
+      <h2>add a new interaction</h2>
       <form onSubmit={this.onSubmit}>
         <DatePicker name="date"
           selected={this.state.date}
@@ -57,6 +59,7 @@ class NewInteractionForm extends React.Component {
           className='ui button'>Submit     
         </button>
       </form>
+    </Fragment>
     )
   }
 }

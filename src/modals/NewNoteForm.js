@@ -30,6 +30,7 @@ class NewNoteForm extends React.Component {
   render(){
     return (
       <Fragment>
+        <h2>add a note on your friend</h2>
         <form onSubmit={this.onSubmit}>
         <label>got a note about your friend?</label>
           <textarea className='textarea'

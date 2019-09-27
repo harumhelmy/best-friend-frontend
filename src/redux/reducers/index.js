@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 const userReducer = (state = {}, action) => {
   switch(action.type) {
     case "FETCHED_USER":
-      return action.payload 
+      return action.payload.user 
     default:
       return state
   }
@@ -11,8 +11,8 @@ const userReducer = (state = {}, action) => {
 
 const friendsReducer = (state = [], action) => {
     switch(action.type) {
-    case "FETCHED_FRIENDS":
-      return action.payload
+    case "FETCHED_USER":
+      return action.payload.friends
     case "ADDED_FRIEND":
       return [...state, action.payload]
     default: 

@@ -6,7 +6,6 @@ import NewNoteForm from '../modals/NewNoteForm'
 import NewInteractionForm from '../modals/NewInteractionForm'
 
 const Home = (props) => {
-  
     return(
       <div>
         <h3>welcome to bestFriend, {props.currentUser.username}! this your home page. </h3>

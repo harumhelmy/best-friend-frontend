@@ -9,14 +9,13 @@ import About from './components/About'
 import FriendPage from './containers/FriendPage'
 import FriendsContainer from './containers/FriendsContainer'
 import { connect } from 'react-redux'
-import { fetchingUser, fetchingFriends } from './redux/actions/index'
+import { fetchingUser } from './redux/actions/index'
 import './App.sass' 
 
 class App extends React.Component {
 
   componentDidMount(){
     this.props.fetchingUser()
-    this.props.fetchingFriends()
   }
   
   render(){
@@ -48,8 +47,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchingUser: () => { dispatch(fetchingUser()) },
-    fetchingFriends: () => { dispatch(fetchingFriends()) }
+    fetchingUser: () => { dispatch(fetchingUser()) }
   }
 }
 

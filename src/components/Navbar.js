@@ -10,7 +10,6 @@ const Navbar = () => {
           <Link to='/about' className='navbar-item'>about bestFriend</Link>
       </div>
     </div>
-
   )
 }
 

@@ -17,13 +17,13 @@ function fetchedFriends(friends){
   return {type: "FETCHED_FRIENDS", payload: friends}
 }
 
-function fetchingFriends(){
-  return (dispatch) => {
-    fetch('http://localhost:3000/api/v1/users/12')
-    .then(res => res.json())
-    .then(user => dispatch(fetchedFriends(user.friends)))
-  }
-}
+// function fetchingFriends(){
+//   return (dispatch) => {
+//     fetch('http://localhost:3000/api/v1/users/12')
+//     .then(res => res.json())
+//     .then(user => dispatch(fetchedFriends(user.friends)))
+//   }
+// }
 
 function addingNewFriend(data){
   return (dispatch) => {
@@ -45,15 +45,16 @@ function addingNewFriend(data){
   }
 }
 
-function addedFriend({name, pronouns, appreciation, userId}){
+function addedFriend(friend){
   return {
     type: 'ADDED_FRIEND',
-    payload: { name, pronouns, appreciation, userId }
+    payload: friend
   }
 }
 
 // important date actions 
 function addingNewImportantDate(data){
+  debugger
   return (dispatch) => {
     fetch('http://localhost:3000/important_dates', {
       method: 'POST',
@@ -133,4 +134,4 @@ function addedInteraction({date, note, user_id, friend_id}) {
   }
 }
 
-export { fetchingUser, fetchingFriends, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction } 
+export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction } 

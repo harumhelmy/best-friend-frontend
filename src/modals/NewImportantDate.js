@@ -32,8 +32,8 @@ class NewImportantDate extends Component {
     const data = {
       name: this.state.name,
       date: this.state.date,
-      user_id: this.props.currentUser.id,
-      friend_id: 6, // needs a selected friend prop,
+      userId: this.props.currentUser.id,
+      friendId: 6, // needs a selected friend prop,
       note: this.state.note
     }
     this.props.addingNewImportantDate(data)
@@ -42,6 +42,7 @@ class NewImportantDate extends Component {
   render(){
     return(
       <Fragment>
+        <h2>add a new important date</h2>
         <form onSubmit={this.onSubmit}>
           
           <label>name</label>
@@ -57,7 +58,6 @@ class NewImportantDate extends Component {
           <DatePicker name="date"
             selected={this.state.date}
             onChange={this.handleDateChange}
-            // onClickOutside may be useful here 
           />
 
           <label>note</label>
