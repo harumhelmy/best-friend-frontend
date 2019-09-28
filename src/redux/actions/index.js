@@ -13,7 +13,7 @@ function fetchingUser() {
 }
 
 // FRIEND ACTIONS
- 
+
 // don't need these anymore, but keeping for prosperity
 // function fetchedFriends(friends){
 //   return {type: "FETCHED_FRIENDS", payload: friends}
@@ -136,4 +136,28 @@ function addedInteraction({date, note, user_id, friend_id}) {
   }
 }
 
-export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction } 
+function updatingAppreciation(info) {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/friends/${info.friendId}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        appreciation: info.appreciation
+      })
+    })
+    .then( res => res.json() )
+    .then ( updated => dispatch(updatedAppreciation(info)) )
+  }
+}
+
+function updatedAppreciation(info){
+  return {
+    type: "UPDATED_APPRECIATION",
+    payload: info
+  }
+}
+
+
+export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction, updatingAppreciation } 

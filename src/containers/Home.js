@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import NewFriendForm from '../modals/NewFriendForm'
 import NewImportantDate from '../modals/NewImportantDate'
 import NewNoteForm from '../modals/NewNoteForm'
@@ -9,7 +10,9 @@ const Home = (props) => {
     return(
       <div>
         <h3>welcome to bestFriend, {props.currentUser.username}! this your home page. </h3>
-        <NewFriendForm />
+
+        <Link to='/newfriend'>add a new friend</Link>
+        
         <br />
         <NewImportantDate />
         <br />

@@ -8,6 +8,8 @@ import Signup from './components/Signup'
 import About from './components/About'
 import FriendPage from './containers/FriendPage'
 import FriendsContainer from './containers/FriendsContainer'
+import NewFriendForm from './modals/NewFriendForm'
+import NewImportantDate from './modals/NewImportantDate'
 import { connect } from 'react-redux'
 import { fetchingUser } from './redux/actions/index'
 import './App.sass' 
@@ -28,6 +30,8 @@ class App extends React.Component {
             <Route exact path='/home' component={Home}/>
             <Route exact path='/friends' component={FriendsContainer} /> 
             <Route exact path='/about' component={About}/>
+            <Route exact path='/newfriend' component={NewFriendForm} />
+            <Route exact path='/newimportantdate' component={NewImportantDate} />
             <Route exact path='/friends/:friendId' component={FriendPage} />
             <Route exact path='/logout' />
           </Switch>

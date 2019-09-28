@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import { connect } from 'react-redux'
 import { addingNewFriend } from '../redux/actions/index'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 
 class NewFriendForm extends React.Component {
 
@@ -29,6 +29,7 @@ class NewFriendForm extends React.Component {
       appreciation: this.state.appreciation
     }
     this.props.addingNewFriend(data)
+    this.props.history.push('/friends')
   }
 
   render() {
@@ -81,4 +82,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewFriendForm)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewFriendForm))
