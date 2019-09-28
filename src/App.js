@@ -19,12 +19,10 @@ class App extends React.Component {
   }
   
   render(){
-
     return (
       <Fragment>
         <Navbar />
-          <Switch> {/* this very likely needs to be under the component that needs to be rendered at all times */}
-            {/* {allFriends} */}
+          <Switch> 
             <Route exact path='/signup' component={Signup} />
             <Route exact path='/login' component={Login}/>
             <Route exact path='/home' component={Home}/>
@@ -35,15 +33,8 @@ class App extends React.Component {
           </Switch>
       </Fragment>
     );
-
   } 
 }
-
-// const mapStateToProps = (state) => {
-//   return {
-//     friends: state.currentUser.friends
-//   }
-// }
 
 const mapDispatchToProps = (dispatch) => {
   return {

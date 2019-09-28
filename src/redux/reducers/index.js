@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 const userReducer = (state = {}, action) => {
   switch(action.type) {
     case "FETCHED_USER":
-      return action.payload.user 
+      return action.payload 
     default:
       return state
   }
@@ -53,6 +53,8 @@ const interactionsReducer = (state = [], action) => {
       return state
   }
 }
+
+
 
 const rootReducer = combineReducers({
   currentUser: userReducer,

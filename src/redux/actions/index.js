@@ -13,9 +13,11 @@ function fetchingUser() {
 }
 
 // FRIEND ACTIONS
-function fetchedFriends(friends){
-  return {type: "FETCHED_FRIENDS", payload: friends}
-}
+ 
+// don't need these anymore, but keeping for prosperity
+// function fetchedFriends(friends){
+//   return {type: "FETCHED_FRIENDS", payload: friends}
+// }
 
 // function fetchingFriends(){
 //   return (dispatch) => {
