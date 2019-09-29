@@ -12,21 +12,6 @@ function fetchingUser() {
   } 
 }
 
-// FRIEND ACTIONS
-
-// don't need these anymore, but keeping for prosperity
-// function fetchedFriends(friends){
-//   return {type: "FETCHED_FRIENDS", payload: friends}
-// }
-
-// function fetchingFriends(){
-//   return (dispatch) => {
-//     fetch('http://localhost:3000/api/v1/users/12')
-//     .then(res => res.json())
-//     .then(user => dispatch(fetchedFriends(user.friends)))
-//   }
-// }
-
 function addingNewFriend(data){
   return (dispatch) => {
     fetch('http://localhost:3000/friends', {
@@ -84,6 +69,7 @@ function addedImportantDate( { name, date, note, user_id, friend_id } ){
 }
 
 // note actions 
+
 function addingNewNote(data){
   return (dispatch) => {
     fetch('http://localhost:3000/notes', {
@@ -94,7 +80,7 @@ function addingNewNote(data){
     body: JSON.stringify({
       content: data.content,
       user_id: data.userId,
-      friend_id: data.friendId //TODO: dynamic render
+      friend_id: data.friendId
     })
   })
   .then( res => res.json())
@@ -109,7 +95,7 @@ function addedNote({content, user_id, friend_id}){
   }
 } 
 
-// interaction actions 
+ 
 function addingNewInteraction(data) {
   return (dispatch) => {
     fetch('http://localhost:3000/interactions', {
@@ -136,7 +122,28 @@ function addedInteraction({date, note, user_id, friend_id}) {
   }
 }
 
-function updatingAppreciation(info) {
+// UPDATING APPRECIATION IS NOW PART OF UPDATING FRIEND
+
+// function updatingAppreciation(info) {
+//   return (dispatch) => {
+//     fetch(`http://localhost:3000/friends/${info.friendId}`, {
+//       method: 'PATCH',
+//       headers: {
+//         'content-type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         appreciation: info.appreciation
+//       })
+//     })
+//     .then( res => res.json() )
+//     .then ( updated => dispatch(updatedFriend(info)) )
+//   }
+// }
+
+function updatingFriend(info) {
+
+  const attributeKey = Object.keys(info)[0]
+
   return (dispatch) => {
     fetch(`http://localhost:3000/friends/${info.friendId}`, {
       method: 'PATCH',
@@ -144,17 +151,17 @@ function updatingAppreciation(info) {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        appreciation: info.appreciation
+        [attributeKey]: info[attributeKey]
       })
     })
     .then( res => res.json() )
-    .then ( updated => dispatch(updatedAppreciation(info)) )
+    .then ( updated => dispatch(updatedFriend(info)) )
   }
 }
 
-function updatedAppreciation(info){
+function updatedFriend(info){
   return {
-    type: "UPDATED_APPRECIATION",
+    type: "UPDATED_FRIEND",
     payload: info
   }
 }
@@ -176,4 +183,4 @@ function deleteFriend(friendId){
   }
 }
 
-export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction, updatingAppreciation, deletingFriend } 
+export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction, deletingFriend, updatingFriend } 

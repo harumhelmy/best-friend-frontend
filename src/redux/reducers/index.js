@@ -15,12 +15,13 @@ const friendsReducer = (state = [], action) => {
       return action.payload.friends
     case "ADDED_FRIEND":
       return [...state, action.payload]
-    case "UPDATED_APPRECIATION":
+    case "UPDATED_FRIEND":
+      const attributeKey = Object.keys(action.payload)[0]
       return state.map( friend => {
         if (friend.id === action.payload.friendId) {
           return {
             ...friend,
-            appreciation: action.payload.appreciation
+            [attributeKey]: action.payload[attributeKey]
           }
         } else {
           return friend
