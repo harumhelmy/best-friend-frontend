@@ -23,7 +23,14 @@ class FriendPage extends React.Component {
        const { id, name, interactions, notes, important_dates, appreciation } = this.props.friend
        return (
       <div className='container'>
-         <h1>{name}</h1>
+         <h1>{ 
+         <EdiText type='text' 
+            value={name}
+            inputProps={{
+              className: 'h1'
+            }}
+          /> }
+         </h1>
          <h3>Here's what you appreciate about {name} &hearts; </h3>
 
           <EdiText type='textarea' 
@@ -48,7 +55,7 @@ class FriendPage extends React.Component {
           <br />
           <button className='button is-small is-danger' 
             onClick={()=>this.props.deletingFriend(id, this.props.history)}>
-              delete this bud
+              delete this friend
           </button>
           
       </div>
