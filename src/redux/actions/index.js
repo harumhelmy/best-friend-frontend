@@ -159,5 +159,21 @@ function updatedAppreciation(info){
   }
 }
 
+function deletingFriend(friendId) {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/friends/${friendId}`, {
+      method: "DELETE"
+    })
+    .then( res => res.json() )
+    .then( deleted => dispatch(deleteFriend(friendId)))
+  }
+}
 
-export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction, updatingAppreciation } 
+function deleteFriend(friendId){
+  return {
+    type: "DELETE_FRIEND",
+    payload: friendId
+  }
+}
+
+export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction, updatingAppreciation, deletingFriend } 

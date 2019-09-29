@@ -3,7 +3,7 @@ import { withRouter, Link  } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Appreciation from '../components/Appreciation'
 import EdiText from 'react-editext'
-import { updatingAppreciation } from '../redux/actions/index'
+import { updatingAppreciation, deletingFriend } from '../redux/actions/index'
 // import InteractionsContainer from '../containers/InteractionsContainer'
 
 class FriendPage extends React.Component {
@@ -17,10 +17,10 @@ class FriendPage extends React.Component {
   }
 
   render(){
-
+    console.log(this.props)
    const friendPage = () => {
      if (this.props.friend)  {
-       const { name, interactions, notes, important_dates, appreciation } = this.props.friend
+       const { id, name, interactions, notes, important_dates, appreciation } = this.props.friend
        return (
       <div className='container'>
          <h1>{name}</h1>
@@ -44,6 +44,13 @@ class FriendPage extends React.Component {
           { notes.map(note => <div><p>{note.content}</p></div>)  }
          <h3>important dates</h3>
           { important_dates.map( date => <div><p>{date.date}</p></div> ) }
+          <br />
+          <br />
+          <button className='button is-small is-danger' 
+            onClick={()=>this.props.deletingFriend(id, this.props.history)}>
+              delete this bud
+          </button>
+          
       </div>
        )
      }
@@ -67,9 +74,10 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    updatingAppreciation: (info) => {dispatch(updatingAppreciation(info))}
+    updatingAppreciation: (info) => {dispatch(updatingAppreciation(info))},
+    deletingFriend: (friendId) => {dispatch(deletingFriend(friendId)); ownProps.history.push('/friends');}
   }
 }
 

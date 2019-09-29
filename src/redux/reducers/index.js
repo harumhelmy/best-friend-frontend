@@ -26,6 +26,8 @@ const friendsReducer = (state = [], action) => {
           return friend
         }
       })
+    case "DELETE_FRIEND":
+      return state.filter( friend => friend.id !== action.payload )
     default: 
       return state 
   }
