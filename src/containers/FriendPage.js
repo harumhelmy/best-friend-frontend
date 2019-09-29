@@ -8,9 +8,7 @@ import { deletingFriend, updatingFriend } from '../redux/actions/index'
 
 class FriendPage extends React.Component {
 
-  /* on each safe instance methods/functions, the order of 
-  the key value pairs of passed in info matters, because the dynamic redux actions depends on the attribute key being 
-  updated to be the first in the array! */
+  /* on each save instance methods/functions below, the order of the key value pairs of passed in info matters, because the dynamic redux actions that updates this information on the front-end depends on the attribute key being updated to be the first in the array! */
 
   onSave = (value, event) => {
     console.log(event)
