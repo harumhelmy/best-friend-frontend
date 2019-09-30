@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import { withRouter, Link  } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Appreciation from '../components/Appreciation'
@@ -14,7 +14,7 @@ class FriendPage extends React.Component {
   // this information on the front-end depends on the attribute key 
   // being updated to be the first one! 
 
-  onSave = (value, event) => {
+  onSave = (value) => {
     const info = {
       appreciation: value,
       friendId: this.props.friend.id
@@ -42,77 +42,89 @@ class FriendPage extends React.Component {
 
    const friendPage = () => {
      if (this.props.friend)  {
-       const { id, name, interactions, pronouns, notes, important_dates, appreciation } = this.props.friend
+       const { id, name, interactions, pronouns, notes, important_dates, appreciation } = this.props.friend 
        return (
-      <div className='container'>
-         <h1>{ 
-         <EdiText type='text' 
-            value={name}
-            inputProps={{
-              className: 'input'
-            }}
-            onSave={this.nameSave}
-          /> }
-         </h1>
-         <EdiText type='text'
-          value={pronouns}
-          onSave={this.pronounsSave}
-         />
+      <Fragment>
+
+        <section className='hero is-primary'>
+          <div className='hero-body'>
+            <h1 className='title'>{ 
+            <EdiText type='text' 
+                value={name}
+                inputProps={{
+                  className: 'input'
+                }}
+                onSave={this.nameSave}
+              /> }
+            </h1>
+            <EdiText type='text'
+              value={pronouns}
+              onSave={this.pronounsSave}
+            />
+          </div>
+        </section> 
+        
+        <section className='container'>
+          <br/>
 
          <div className='columns'>
            <div className='column is-6'>
-         <h3>interactions</h3>
-          { interactions.map( interaction => <div><li>{interaction.date}</li></div>)  }
 
-            <br/>
-          <Link to={`/friends/${id}/newinteraction`}> add a new interaction </Link>
+              <div className='box'>
+                <h3>interactions</h3>
+                { interactions.map( interaction => <div><li>{interaction.date} <p>{interaction.note}</p></li></div>)  }
+                  <br/>
+                <Link to={`/friends/${id}/newinteraction`}> add a new interaction </Link>
+              </div>
 
-          
-          <h3>notes</h3>
-          { notes.map(note => <div><p>{note.content}</p></div>)  }
-          <br />
-          <Link to={`/friends/${id}/newnote`}> add a new note about {name} </Link>
-          
-          <h3>important dates</h3>
-          { important_dates.map( date => <div><p>{date.date}</p></div> ) }
-          
-          <br />
-          <Link to={`/friends/${id}/newimpdate`}> add a new important date </Link>
+              <div className='box'>
+                <h3>notes</h3>
+                { notes.map(note => <div><p>{note.content}</p></div>)  }
+                <br />
+                <Link to={`/friends/${id}/newnote`}> add a new note about {name} </Link>
+              </div>
 
-          <br />
-          <br />
+              <div className='box'>
+                <h3>important dates</h3>
+                { important_dates.map( date => <div><p>{date.date}</p></div> ) }
+                
+                <br />
+                <Link to={`/friends/${id}/newimpdate`}> add a new important date </Link>
+              </div>
+
+              <br />
+              <br />
           </div>
 
            <div className='column is-6'>
+            <div className='box'>
+              <div className='content'>
+                <h3>here's what you appreciate about {name} &hearts; </h3>
 
-            <h3>here's what you appreciate about {name} &hearts; </h3>
-
-              <EdiText type='textarea' 
-                inputProps={{
-                  className: 'textarea',
-                  style: {
-                    outline: 'none',
-                    minWidth: 'auto'
-                  }
-                }}
-                value={appreciation}
-                onSave={this.onSave}
-              />
+                <EdiText type='textarea' 
+                  inputProps={{
+                    className: 'textarea',
+                    style: {
+                      outline: 'none',
+                      minWidth: 'auto'
+                    }
+                  }}
+                  value={appreciation}
+                  onSave={this.onSave}
+                />
+              </div>
+              </div>
             </div>
-        
+          </div>
+                  
 
-        {/* <div className='columns'> */}
-          
-          
-        </div>
-        {/* </div> this closes the div before interactions */}
 
           <button className='button is-small is-warning' 
             onClick={()=>this.props.deletingFriend(id)}>
               delete this friend
           </button>
-          
-      </div>
+        </section> 
+      </Fragment>
        )
      }
    }
@@ -128,11 +140,11 @@ class FriendPage extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {
-    friend: state.friends.find(
-      friend => friend.id === parseInt(ownProps.match.params.friendId)
-    )
-  }
+    return {
+      friend: state.friends.find(
+        friend => friend.id === parseInt(ownProps.match.params.friendId)
+      )
+    }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {

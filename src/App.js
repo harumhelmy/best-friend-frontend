@@ -1,5 +1,6 @@
 import React, {Fragment} from 'react';
-import './App.css';
+import './App.scss';
+import './App.sass';
 import { Route, Switch, withRouter } from 'react-router-dom'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
@@ -14,7 +15,7 @@ import NewNoteForm from './modals/NewNoteForm'
 import NewInteractionForm from './modals/NewInteractionForm'
 import { connect } from 'react-redux'
 import { fetchingUser } from './redux/actions/index'
-import './App.sass' 
+
 
 class App extends React.Component {
 

@@ -12,6 +12,7 @@ class FriendsContainer extends React.Component{
         {
           this.props.friends.map( friend => <FriendCard key={`friend-${friend.id}`} friend={friend} /> )
         }
+        
       </div>
     )
   }

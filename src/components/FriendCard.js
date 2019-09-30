@@ -5,7 +5,7 @@ const FriendCard = (props) => {
 
   return (
     <Link to={`/friends/${props.friend.id}`}>
-    <div className='card'>
+    <div className='box'>
       <header className='card-header'>
         <p className='card-header-title'>{props.friend.name}</p>
         <div className='card-content'>

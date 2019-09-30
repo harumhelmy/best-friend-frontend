@@ -51,6 +51,7 @@ class NewFriendForm extends React.Component {
                 <a href= "https://www.mypronouns.org/what-and-why" target="_blank">
                     (why are pronouns important?)
                 </a>
+
                 <input className='input'
                   type="text" 
                   name='pronouns'
@@ -58,6 +59,7 @@ class NewFriendForm extends React.Component {
                   value={this.state.pronouns}
                   onChange={this.handleChange}
                 />
+                
                 <label>appreciation</label>
                 <textarea className='textarea'
                   type="text" 

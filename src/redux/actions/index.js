@@ -115,10 +115,11 @@ function addingNewInteraction(data) {
   }
 }
 
-function addedInteraction({date, note, user_id, friend_id}) {
+function addedInteraction(interaction) {
+  debugger
   return {
   type: 'ADDED_INTERACTION',
-  payload: {date, note, user_id, friend_id}
+  payload: interaction
   }
 }
 

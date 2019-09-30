@@ -1,10 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import NewFriendForm from '../modals/NewFriendForm'
-import NewImportantDate from '../modals/NewImportantDate'
-import NewNoteForm from '../modals/NewNoteForm'
-import NewInteractionForm from '../modals/NewInteractionForm'
 
 const Home = (props) => {
     return(
