@@ -7,9 +7,8 @@ class FriendsContainer extends React.Component{
   render(){
     return(
       <div className='container'> 
-        <h2>this is the friends index!</h2>
+        <h2>here's everyone! &hearts;</h2>
 
-        <h3>friend list:</h3>
         {
           this.props.friends.map( friend => <FriendCard key={`friend-${friend.id}`} friend={friend} /> )
         }

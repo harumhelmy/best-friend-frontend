@@ -25,26 +25,41 @@ class NewNoteForm extends React.Component {
       friendId: this.props.friend.id
     }
     this.props.addingNewNote(data)
+    this.props.history.push(`/friends/${this.props.friend.id}`)
   }
   
   render(){
     return (
+      
       <Fragment>
-        <h2>add a note on your friend</h2>
-        <form onSubmit={this.onSubmit}>
-        <label>got a note about your friend?</label>
-          <textarea className='textarea'
-            type="text" 
-            name="content"
-            placeholder="friends?"
-            value={this.state.content}
-            onChange={this.handleChange}
-          />
-          <button type='submit'
-            className='ui button'> Submit
-          </button>
-        </form>
+        {
+          this.props.friend ?
+          <div class="columns is-mobile">
+            <div class="column is-three-fifths is-offset-one-fifth">
+              <h2>{`got something on your mind about ${this.props.friend.name}?`}</h2>
+              <form onSubmit={this.onSubmit}>
+
+              <label>{`add a note!`}</label>
+                <textarea className='textarea'
+                  type="text" 
+                  name="content"
+                  placeholder={`what makes ${this.props.friend.name} tick? what's their favorite food?`}
+                  value={this.state.content}
+                  onChange={this.handleChange}
+                />
+
+                <button type='submit'
+                  className='ui button'> Submit
+                </button>
+
+              </form>
+            </div>
+          </div>
+        :
+        null
+        }
       </Fragment>
+      
     )
   }
 }

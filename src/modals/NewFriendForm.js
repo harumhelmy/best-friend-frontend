@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import { connect } from 'react-redux'
 import { addingNewFriend } from '../redux/actions/index'
-import { Redirect, withRouter } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class NewFriendForm extends React.Component {
 
@@ -34,42 +34,45 @@ class NewFriendForm extends React.Component {
 
   render() {
     return (
-   <Fragment>
-    <h3>add a new friend</h3>
-     <form onSubmit={this.onSubmit}>
-          <label>name</label>
-          <input className='input'
-            type="text" 
-            name="name"
-            placeholder="name" 
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <label>pronouns</label>
-          <br/>
-          <a href= "https://www.mypronouns.org/what-and-why" target="_blank">
-              (why are pronouns important?)
-          </a>
-          <input className='input'
-            type="text" 
-            name='pronouns'
-            placeholder="pronouns"
-            value={this.state.pronouns}
-            onChange={this.handleChange}
-          />
-          <label>appreciation</label>
-          <textarea className='textarea'
-            type="text" 
-            name="appreciation"
-            placeholder="what do you appreciate about this friend?"
-            value={this.state.appreciation}
-            onChange={this.handleChange}
-          />
-        <button type='submit' 
-          className='ui button'> Submit
-        </button>
-    </form>
-  </Fragment>
+      <div class="columns is-mobile">
+        <div class="column is-three-fifths is-offset-one-fifth">
+          <h3>add a new friend</h3>
+          <form onSubmit={this.onSubmit}>
+                <label>name</label>
+                <input className='input'
+                  type="text" 
+                  name="name"
+                  placeholder="name" 
+                  value={this.state.name}
+                  onChange={this.handleChange}
+                />
+                <label>pronouns</label>
+                <br/>
+                <a href= "https://www.mypronouns.org/what-and-why" target="_blank">
+                    (why are pronouns important?)
+                </a>
+                <input className='input'
+                  type="text" 
+                  name='pronouns'
+                  placeholder="pronouns"
+                  value={this.state.pronouns}
+                  onChange={this.handleChange}
+                />
+                <label>appreciation</label>
+                <textarea className='textarea'
+                  type="text" 
+                  name="appreciation"
+                  placeholder="what do you appreciate about this friend?"
+                  value={this.state.appreciation}
+                  onChange={this.handleChange}
+                />
+              <button type='submit' 
+                className='ui button'> Submit
+              </button>
+
+          </form>
+        </div>
+      </div>
     )
   }
 }
