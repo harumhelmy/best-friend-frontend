@@ -46,6 +46,10 @@ class NewFriendForm extends React.Component {
             onChange={this.handleChange}
           />
           <label>pronouns</label>
+          <br/>
+          <a href= "https://www.mypronouns.org/what-and-why" target="_blank">
+              (why are pronouns important?)
+          </a>
           <input className='input'
             type="text" 
             name='pronouns'

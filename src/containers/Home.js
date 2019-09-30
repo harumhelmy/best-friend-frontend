@@ -9,16 +9,11 @@ import NewInteractionForm from '../modals/NewInteractionForm'
 const Home = (props) => {
     return(
       <div>
-        <h3>welcome to bestFriend, {props.currentUser.username}! this your home page. </h3>
+        <h3>Hi, {props.currentUser.username}! Welcome to bestFriend. </h3>
 
         <Link to='/newfriend'>add a new friend</Link>
-        
-        <br />
-        <NewImportantDate />
-        <br />
-        <NewNoteForm />
-        <br />
-        <NewInteractionForm />
+        <br/>
+        <Link to='/friends'>see all your friends :)</Link>
       </div>
     )
 }

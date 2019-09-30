@@ -22,7 +22,7 @@ class NewNoteForm extends React.Component {
     const data = {
       userId: this.props.currentUser.id,
       content: this.state.content,
-      friendId: 6
+      friendId: this.props.friend.id
     }
     this.props.addingNewNote(data)
   }
@@ -49,10 +49,12 @@ class NewNoteForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.currentUser
-    // selectedFriend: need to dynamically render this
+    currentUser: state.currentUser,
+    friend: state.friends.find(
+      friend => friend.id === parseInt(ownProps.match.params.friendId)
+    )
   }
 }
 

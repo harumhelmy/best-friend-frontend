@@ -28,12 +28,14 @@ class NewImportantDate extends Component {
   }
 
   onSubmit = (event) => {
+    debugger
+    console.log(this.props.friend.id)
     event.preventDefault()
     const data = {
       name: this.state.name,
       date: this.state.date,
       userId: this.props.currentUser.id,
-      friendId: 6, // needs a selected friend prop,
+      friendId: this.props.friend.id, 
       note: this.state.note
     }
     this.props.addingNewImportantDate(data)
@@ -77,9 +79,12 @@ class NewImportantDate extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    friend: state.friends.find(
+      friend => friend.id === parseInt(ownProps.match.params.friendId)
+    )
   }
 }
 

@@ -33,7 +33,7 @@ class NewInteractionForm extends React.Component {
       date: this.state.date,
       note: this.state.note,
       userId: this.props.currentUser.id,
-      friendId: 6
+      friendId: this.props.friend.id
     }
     this.props.addingNewInteraction(data)
   }
@@ -64,9 +64,12 @@ class NewInteractionForm extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    friend: state.friends.find(
+      friend => friend.id === parseInt(ownProps.match.params.friendId)
+    )
   }
 }
 

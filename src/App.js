@@ -10,6 +10,8 @@ import FriendPage from './containers/FriendPage'
 import FriendsContainer from './containers/FriendsContainer'
 import NewFriendForm from './modals/NewFriendForm'
 import NewImportantDate from './modals/NewImportantDate'
+import NewNoteForm from './modals/NewNoteForm'
+import NewInteractionForm from './modals/NewInteractionForm'
 import { connect } from 'react-redux'
 import { fetchingUser } from './redux/actions/index'
 import './App.sass' 
@@ -25,14 +27,26 @@ class App extends React.Component {
       <Fragment>
         <Navbar />
           <Switch> 
-            <Route exact path='/signup' component={Signup} />
-            <Route exact path='/login' component={Login}/>
-            <Route exact path='/home' component={Home}/>
-            <Route exact path='/friends' component={FriendsContainer} /> 
-            <Route exact path='/about' component={About}/>
-            <Route exact path='/newfriend' component={NewFriendForm} />
-            <Route exact path='/newimportantdate' component={NewImportantDate} />
-            <Route exact path='/friends/:friendId' component={FriendPage} />
+            <Route exact path='/signup' 
+              component={Signup} />
+            <Route exact path='/login' 
+              component={Login}/>
+            <Route exact path='/home' 
+              component={Home}/>
+            <Route exact path='/friends' 
+              component={FriendsContainer} /> 
+            <Route exact path='/about' 
+              component={About}/>
+            <Route exact path='/newfriend' 
+              component={NewFriendForm} />
+            <Route exact path='/friends/:friendId' 
+              component={FriendPage} />
+            <Route exact path='/friends/:friendId/newimpdate' 
+              component={NewImportantDate} />
+            <Route exact path='/friends/:friendId/newnote'
+              component={NewNoteForm} />
+            <Route exact path='/friends/:friendId/newinteraction'
+              component={NewInteractionForm} />
             <Route exact path='/logout' />
           </Switch>
       </Fragment>
