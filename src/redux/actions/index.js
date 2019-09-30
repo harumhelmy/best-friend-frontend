@@ -87,10 +87,10 @@ function addingNewNote(data){
   }
 }
 
-function addedNote({content, user_id, friend_id}){
+function addedNote(note){
   return {
     type: 'ADDED_NOTE',
-    payload: { content, user_id, friend_id }
+    payload: note
   }
 } 
 

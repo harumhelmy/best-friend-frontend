@@ -50,6 +50,17 @@ const friendsReducer = (state = [], action) => {
           return friend
         }
       })
+    case "ADDED_NOTE":
+      return state.map( friend => {
+        if (friend.id === action.payload.friend_id) {
+          return {
+            ...friend,
+            notes: [...friend.notes, action.payload]
+          }
+        } else {
+          return friend
+        }
+      })
     case "DELETE_FRIEND":
       return state.filter( friend => friend.id !== action.payload )
     default: 
