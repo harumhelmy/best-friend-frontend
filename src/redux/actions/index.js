@@ -94,7 +94,6 @@ function addedNote(note){
   }
 } 
 
- 
 function addingNewInteraction(data) {
   return (dispatch) => {
     fetch('http://localhost:3000/interactions', {
