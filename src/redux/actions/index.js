@@ -121,24 +121,6 @@ function addedInteraction(interaction) {
   }
 }
 
-// UPDATING APPRECIATION IS NOW PART OF UPDATING FRIEND
-
-// function updatingAppreciation(info) {
-//   return (dispatch) => {
-//     fetch(`http://localhost:3000/friends/${info.friendId}`, {
-//       method: 'PATCH',
-//       headers: {
-//         'content-type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         appreciation: info.appreciation
-//       })
-//     })
-//     .then( res => res.json() )
-//     .then ( updated => dispatch(updatedFriend(info)) )
-//   }
-// }
-
 function updatingFriend(info) {
 
   const attributeKey = Object.keys(info)[0]
@@ -183,3 +165,22 @@ function deleteFriend(friendId){
 }
 
 export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction, deletingFriend, updatingFriend } 
+
+
+// UPDATING APPRECIATION IS NOW PART OF UPDATING FRIEND
+
+// function updatingAppreciation(info) {
+//   return (dispatch) => {
+//     fetch(`http://localhost:3000/friends/${info.friendId}`, {
+//       method: 'PATCH',
+//       headers: {
+//         'content-type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         appreciation: info.appreciation
+//       })
+//     })
+//     .then( res => res.json() )
+//     .then ( updated => dispatch(updatedFriend(info)) )
+//   }
+// }

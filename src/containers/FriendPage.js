@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import Appreciation from '../components/Appreciation'
 import EdiText from 'react-editext'
 import { deletingFriend, updatingFriend } from '../redux/actions/index'
+import Moment from 'react-moment'
 // import InteractionsContainer from '../containers/InteractionsContainer'
 
 class FriendPage extends React.Component {
@@ -72,7 +73,12 @@ class FriendPage extends React.Component {
 
               <div className='box'>
                 <h3>interactions</h3>
-                { interactions.map( interaction => <div><li>{interaction.date} <p>{interaction.note}</p></li></div>)  }
+                { interactions.map( interaction => 
+                  <div>
+                    <li><Moment fromNow>{interaction.date}</Moment> 
+                    <p>{interaction.note} </p></li>
+                  </div>)  
+                }
                   <br/>
                 <Link to={`/friends/${id}/newinteraction`}> add a new interaction </Link>
               </div>
@@ -117,8 +123,6 @@ class FriendPage extends React.Component {
             </div>
           </div>
                   
-
-
           <button className='button is-small is-warning' 
             onClick={()=>this.props.deletingFriend(id)}>
               delete this friend
