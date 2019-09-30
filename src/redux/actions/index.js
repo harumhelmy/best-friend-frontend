@@ -61,15 +61,14 @@ function addingNewImportantDate(data){
   }
 }
 
-function addedImportantDate( { name, date, note, user_id, friend_id } ){
+function addedImportantDate(date){
   return {
     type: "ADDED_IMPORTANT_DATE",
-    payload: { name, date, note, user_id, friend_id }
+    payload: date
   }
 }
 
 // note actions 
-
 function addingNewNote(data){
   return (dispatch) => {
     fetch('http://localhost:3000/notes', {

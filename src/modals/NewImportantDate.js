@@ -29,7 +29,6 @@ class NewImportantDate extends Component {
   }
 
   onSubmit = (event) => {
-    debugger
     console.log(this.props.friend.id)
     event.preventDefault()
     const data = {

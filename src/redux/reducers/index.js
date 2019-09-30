@@ -18,6 +18,7 @@ const friendsReducer = (state = [], action) => {
     case "UPDATED_FRIEND":
       const attributeKey = Object.keys(action.payload)[0] 
       return state.map( friend => {
+        debugger
         if (friend.id === action.payload.friendId) {
           return {
             ...friend,
@@ -36,6 +37,17 @@ const friendsReducer = (state = [], action) => {
           }
           } else {
             return friend
+        }
+      })
+    case "ADDED_IMPORTANT_DATE":
+      return state.map( friend => {
+        if (friend.id === action.payload.friend_id) {
+          return {
+            ...friend,
+            important_dates: [...friend.important_dates, action.payload]
+          }
+        } else {
+          return friend
         }
       })
     case "DELETE_FRIEND":

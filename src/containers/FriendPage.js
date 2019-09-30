@@ -86,7 +86,7 @@ class FriendPage extends React.Component {
 
               <div className='box'>
                 <h3>important dates</h3>
-                { important_dates.map( date => <div><p>{date.date}</p></div> ) }
+                { important_dates.map( date => <div><li>{date.date}<p>{date.name}</p></li></div> ) }
                 
                 <br />
                 <Link to={`/friends/${id}/newimpdate`}> add a new important date </Link>
