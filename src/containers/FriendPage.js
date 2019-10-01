@@ -43,7 +43,7 @@ class FriendPage extends React.Component {
 
    const friendPage = () => {
      if (this.props.friend)  {
-       const { id, name, pronouns, notes, important_dates, appreciation } = this.props.friend 
+       const { id, name, pronouns, notes, appreciation } = this.props.friend 
        return (
       <Fragment>
 

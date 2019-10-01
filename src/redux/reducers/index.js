@@ -27,28 +27,6 @@ const friendsReducer = (state = [], action) => {
           return friend
         }
       })
-    case 'ADDED_INTERACTION': 
-      return state.map( friend => {
-        if (friend.id === action.payload.friend_id) {
-          return {
-            ...friend, 
-            interactions: [...friend.interactions, action.payload]
-          }
-          } else {
-            return friend
-        }
-      })
-    case "ADDED_IMPORTANT_DATE":
-      return state.map( friend => {
-        if (friend.id === action.payload.friend_id) {
-          return {
-            ...friend,
-            important_dates: [...friend.important_dates, action.payload]
-          }
-        } else {
-          return friend
-        }
-      })
     case "ADDED_NOTE":
       return state.map( friend => {
         if (friend.id === action.payload.friend_id) {
@@ -71,6 +49,8 @@ const importantDatesReducer = (state = [], action) => {
   switch(action.type) {
     case 'FETCHED_USER':
       return action.payload.important_dates
+    case "ADDED_IMPORTANT_DATE":
+      return [...state, action.payload]
     default:
       return state
   }
@@ -80,6 +60,8 @@ const interactionsReducer = (state = [], action) => {
   switch(action.type){
     case 'FETCHED_USER':
       return action.payload.interactions
+    case "ADDED_INTERACTION":
+      return [...state, action.payload]
     default:
       return state
   }
