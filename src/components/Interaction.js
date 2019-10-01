@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import Moment from 'react-moment'
 // import { deletingInteraction } from '../redux/actions/index'
 
-const Interaction = (props)=>{
+const Interaction = (props) => {
 
   const { id, date, note, friend_id } = props.interaction
 

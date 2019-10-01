@@ -43,27 +43,29 @@ class FriendPage extends React.Component {
 
    const friendPage = () => {
      if (this.props.friend)  {
-       const { id, name, interactions, pronouns, notes, important_dates, appreciation } = this.props.friend 
+       const { id, name, pronouns, notes, important_dates, appreciation } = this.props.friend 
        return (
       <Fragment>
 
         <section className='hero'>
           <div className='hero-body'>
-            <h1 className='title'>{ 
-            <EdiText type='text' 
-                value={name}
-                inputProps={{
-                  className: 'input'
-                }}
-                onSave={this.nameSave}
-                editButtonClassName="fas fa-pencil-alt"
-              /> }
+            <h1 className='title'>
+              <EdiText type='text' 
+                  value={name}
+                  inputProps={{
+                    className: 'input'
+                  }}
+                  onSave={this.nameSave}
+                  editButtonClassName="fas fa-pencil-alt"
+                /> 
             </h1>
+
             <EdiText type='text'
               value={pronouns}
               onSave={this.pronounsSave}
               editButtonClassName="fas fa-pencil-alt"
             />
+
           </div>
         </section> 
         
@@ -76,7 +78,7 @@ class FriendPage extends React.Component {
               <div className='box'>
                 <h3>interactions</h3>
                 { 
-                  interactions.map( interaction => 
+                  this.props.interactions.map( interaction => 
                     <Interaction interaction={interaction} />)
                 }
                   <br/>
@@ -85,7 +87,7 @@ class FriendPage extends React.Component {
 
               <div className='box'>
                 <h3>important dates</h3>
-                { important_dates.map( date => <div><li>{date.date}<p>{date.name}</p></li></div> ) }
+                { this.props.importantDates.map( date => <div><li>{date.date}<p>{date.title}</p></li></div> ) }
                 
                 <br />
                 <Link to={`/friends/${id}/newimpdate`}> add a new important date </Link>
@@ -152,8 +154,14 @@ class FriendPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-      friend: state.friends.find(
-        friend => friend.id === parseInt(ownProps.match.params.friendId)
+      friend: state.friends.find( friend => 
+        friend.id === parseInt(ownProps.match.params.friendId)
+      ),
+      interactions: state.interactions.filter( interaction => 
+        interaction.friend_id === parseInt(ownProps.match.params.friendId)
+      ),
+      importantDates: state.importantDates.filter( date => 
+        date.friend_id === parseInt(ownProps.match.params.friendId)
       )
     }
 }

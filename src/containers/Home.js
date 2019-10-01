@@ -5,11 +5,13 @@ import { Link } from 'react-router-dom'
 const Home = (props) => {
     return(
     <Fragment>
-      <div>
-        <h3>Hi, {props.currentUser.username}! Welcome to bestFriend. </h3>
-        <Link to='/newfriend'>add a new friend</Link>
-        <br/>
-        <Link to='/friends'>see all your friends :)</Link>
+      <div className='container'>
+        <div className='hero'>
+          <h1 className='title'>Hi, {props.currentUser.username}! Welcome to bestFriend. </h1>
+          <Link to='/newfriend'>add a new friend</Link>
+          <br/>
+          <Link to='/friends'>see all your friends :)</Link>
+        </div>
       </div>
       {/* <img 
           src={require('../images/undraw_horror_movie_3988.svg')} 

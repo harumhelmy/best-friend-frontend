@@ -41,7 +41,6 @@ function addedFriend(friend){
 
 // important date actions 
 function addingNewImportantDate(data){
-  debugger
   return (dispatch) => {
     fetch('http://localhost:3000/important_dates', {
       method: 'POST',
@@ -49,7 +48,7 @@ function addingNewImportantDate(data){
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        name: data.name,
+        title: data.title,
         date: data.date, 
         user_id: data.userId,
         note: data.note,
@@ -113,12 +112,31 @@ function addingNewInteraction(data) {
   }
 }
 
+
 function addedInteraction(interaction) {
   return {
   type: 'ADDED_INTERACTION',
   payload: interaction
   }
 }
+
+// for calendar component
+function fetchingInteractions() {
+  return (dispatch, getState) => {
+    const userId = getState().currentUser.id
+    fetch(`http://localhost:3000/api/v1/users/12/get_interactions`)
+    .then(res => res.json())
+    .then( interactions => dispatch(fetchedInteractions(interactions)))
+  }
+}
+
+function fetchedInteractions(interactions) {
+  return {
+    type: 'FETCHED_INTERACTIONS',
+    payload: interactions
+  }
+}
+
 
 function updatingFriend(info) {
 
@@ -169,7 +187,8 @@ export { fetchingUser,
   addingNewNote, 
   addingNewInteraction, 
   deletingFriend, 
-  updatingFriend } 
+  updatingFriend,
+  fetchingInteractions } 
 
 
 // UPDATING APPRECIATION IS NOW PART OF UPDATING FRIEND

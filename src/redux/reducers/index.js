@@ -18,7 +18,6 @@ const friendsReducer = (state = [], action) => {
     case "UPDATED_FRIEND":
       const attributeKey = Object.keys(action.payload)[0] 
       return state.map( friend => {
-        debugger
         if (friend.id === action.payload.friendId) {
           return {
             ...friend,
@@ -68,9 +67,29 @@ const friendsReducer = (state = [], action) => {
   }
 }
 
+const importantDatesReducer = (state = [], action) => {
+  switch(action.type) {
+    case 'FETCHED_USER':
+      return action.payload.important_dates
+    default:
+      return state
+  }
+}
+
+const interactionsReducer = (state = [], action) => {
+  switch(action.type){
+    case 'FETCHED_USER':
+      return action.payload.interactions
+    default:
+      return state
+  }
+}
+
 const rootReducer = combineReducers({
   currentUser: userReducer,
-  friends: friendsReducer
+  friends: friendsReducer,
+  importantDates: importantDatesReducer,
+  interactions: interactionsReducer
 })
 
 export default rootReducer  

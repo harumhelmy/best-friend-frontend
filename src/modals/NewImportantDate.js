@@ -10,7 +10,7 @@ class NewImportantDate extends Component {
   constructor(){
     super()
     this.state = {
-      name: '',
+      title: '',
       date: new Date(),
       note: ''
     }
@@ -29,10 +29,9 @@ class NewImportantDate extends Component {
   }
 
   onSubmit = (event) => {
-    console.log(this.props.friend.id)
     event.preventDefault()
     const data = {
-      name: this.state.name,
+      title: this.state.title,
       date: this.state.date,
       userId: this.props.currentUser.id,
       friendId: this.props.friend.id, 
@@ -54,9 +53,9 @@ class NewImportantDate extends Component {
               <label>name</label>
               <input className='input'
                 type="text" 
-                name="name"
+                name="title"
                 placeholder="what's happening?" 
-                value={this.state.name}
+                value={this.state.title}
                 onChange={this.handleChange}
               />
 

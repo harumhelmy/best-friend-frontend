@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Home from './containers/Home'
 import Signup from './components/Signup'
 import About from './components/About'
+import Calendar from './components/Calendar'
 import FriendPage from './containers/FriendPage'
 import FriendsContainer from './containers/FriendsContainer'
 import NewFriendForm from './modals/NewFriendForm'
@@ -22,6 +23,7 @@ class App extends React.Component {
   componentDidMount(){
     this.props.fetchingUser()
   }
+  
   
   render(){
     return (
@@ -40,6 +42,8 @@ class App extends React.Component {
               component={About}/>
             <Route exact path='/newfriend' 
               component={NewFriendForm} />
+            <Route exact path='/calendar'
+              component={Calendar} />
             <Route exact path='/friends/:friendId' 
               component={FriendPage} />
             <Route exact path='/friends/:friendId/newimpdate' 
