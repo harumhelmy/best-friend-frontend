@@ -120,24 +120,6 @@ function addedInteraction(interaction) {
   }
 }
 
-// for calendar component
-function fetchingInteractions() {
-  return (dispatch, getState) => {
-    const userId = getState().currentUser.id
-    fetch(`http://localhost:3000/api/v1/users/12/get_interactions`)
-    .then(res => res.json())
-    .then( interactions => dispatch(fetchedInteractions(interactions)))
-  }
-}
-
-function fetchedInteractions(interactions) {
-  return {
-    type: 'FETCHED_INTERACTIONS',
-    payload: interactions
-  }
-}
-
-
 function updatingFriend(info) {
 
   const attributeKey = Object.keys(info)[0]
@@ -187,8 +169,7 @@ export { fetchingUser,
   addingNewNote, 
   addingNewInteraction, 
   deletingFriend, 
-  updatingFriend,
-  fetchingInteractions } 
+  updatingFriend } 
 
 
 // UPDATING APPRECIATION IS NOW PART OF UPDATING FRIEND

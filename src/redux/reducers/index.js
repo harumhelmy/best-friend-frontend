@@ -47,7 +47,7 @@ const friendsReducer = (state = [], action) => {
 
 const importantDatesReducer = (state = [], action) => {
   switch(action.type) {
-    case 'FETCHED_USER':
+    case "FETCHED_USER":
       return action.payload.important_dates
     case "ADDED_IMPORTANT_DATE":
       return [...state, action.payload]
@@ -58,7 +58,7 @@ const importantDatesReducer = (state = [], action) => {
 
 const interactionsReducer = (state = [], action) => {
   switch(action.type){
-    case 'FETCHED_USER':
+    case "FETCHED_USER":
       return action.payload.interactions
     case "ADDED_INTERACTION":
       return [...state, action.payload]

@@ -2,9 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const FriendCard = (props) => {
-
   return (
-    
     <div className='column is-3'>
       <Link to={`/friends/${props.friend.id}`}
         style={{ textDecoration: 'none' }}>
@@ -14,7 +12,6 @@ const FriendCard = (props) => {
             </div>
       </Link>
     </div>
-  
   )
 }
 

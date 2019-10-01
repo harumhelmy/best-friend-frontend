@@ -78,8 +78,11 @@ class FriendPage extends React.Component {
               <div className='box'>
                 <h3>interactions</h3>
                 { 
+                  this.props.interactions ?
                   this.props.interactions.map( interaction => 
-                    <Interaction interaction={interaction} />)
+                    <Interaction interaction={interaction} /> 
+                  )
+                  : null
                 }
                   <br/>
                 <Link to={`/friends/${id}/newinteraction`}> add a new interaction </Link>
@@ -87,7 +90,13 @@ class FriendPage extends React.Component {
 
               <div className='box'>
                 <h3>important dates</h3>
-                { this.props.importantDates.map( date => <div><li>{date.date}<p>{date.title}</p></li></div> ) }
+                { 
+                  this.props.importantDates ? 
+                  this.props.importantDates.map( date => 
+                    <div><li>{date.date}<p>{date.title}</p></li></div> 
+                  ) 
+                  : null
+                }
                 
                 <br />
                 <Link to={`/friends/${id}/newimpdate`}> add a new important date </Link>
@@ -155,14 +164,11 @@ class FriendPage extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
       friend: state.friends.find( friend => 
-        friend.id === parseInt(ownProps.match.params.friendId)
-      ),
+        friend.id === parseInt(ownProps.match.params.friendId)),
       interactions: state.interactions.filter( interaction => 
-        interaction.friend_id === parseInt(ownProps.match.params.friendId)
-      ),
+        interaction.friend_id === parseInt(ownProps.match.params.friendId)),
       importantDates: state.importantDates.filter( date => 
-        date.friend_id === parseInt(ownProps.match.params.friendId)
-      )
+        date.friend_id === parseInt(ownProps.match.params.friendId))
     }
 }
 
