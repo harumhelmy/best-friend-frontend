@@ -5,7 +5,6 @@ const Signup = () => {
 
     <Fragment>
       <h2>Hi there! Create a new account:</h2>
-    
     </Fragment>        
   )
 }

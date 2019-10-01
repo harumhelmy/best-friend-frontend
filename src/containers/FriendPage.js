@@ -1,11 +1,11 @@
 import React, {Fragment} from 'react'
 import { withRouter, Link  } from 'react-router-dom'
 import { connect } from 'react-redux'
-import Appreciation from '../components/Appreciation'
 import EdiText from 'react-editext'
 import { deletingFriend, updatingFriend } from '../redux/actions/index'
 import Moment from 'react-moment'
-// import InteractionsContainer from '../containers/InteractionsContainer'
+import Note from '../components/Note'
+import Interaction from '../components/Interaction'
 
 class FriendPage extends React.Component {
 
@@ -47,7 +47,7 @@ class FriendPage extends React.Component {
        return (
       <Fragment>
 
-        <section className='hero is-primary'>
+        <section className='hero'>
           <div className='hero-body'>
             <h1 className='title'>{ 
             <EdiText type='text' 
@@ -56,11 +56,13 @@ class FriendPage extends React.Component {
                   className: 'input'
                 }}
                 onSave={this.nameSave}
+                editButtonClassName="fas fa-pencil-alt"
               /> }
             </h1>
             <EdiText type='text'
               value={pronouns}
               onSave={this.pronounsSave}
+              editButtonClassName="fas fa-pencil-alt"
             />
           </div>
         </section> 
@@ -73,21 +75,12 @@ class FriendPage extends React.Component {
 
               <div className='box'>
                 <h3>interactions</h3>
-                { interactions.map( interaction => 
-                  <div>
-                    <li><Moment fromNow>{interaction.date}</Moment> 
-                    <p>{interaction.note} </p></li>
-                  </div>)  
+                { 
+                  interactions.map( interaction => 
+                    <Interaction interaction={interaction} />)
                 }
                   <br/>
                 <Link to={`/friends/${id}/newinteraction`}> add a new interaction </Link>
-              </div>
-
-              <div className='box'>
-                <h3>notes</h3>
-                { notes.map(note => <div><p>{note.content}</p></div>)  }
-                <br />
-                <Link to={`/friends/${id}/newnote`}> add a new note about {name} </Link>
               </div>
 
               <div className='box'>
@@ -117,9 +110,23 @@ class FriendPage extends React.Component {
                   }}
                   value={appreciation}
                   onSave={this.onSave}
+                  editButtonClassName="fas fa-pencil-alt"
                 />
               </div>
               </div>
+
+              <div className='box'>
+                <h3>notes</h3>
+                { 
+                  notes.map(note => 
+                    <Note key={`note-${note.id}`}
+                    note={note} 
+                  /> )  
+                }
+                <br />
+                <Link to={`/friends/${id}/newnote`}> add a new note about {name} </Link>
+              </div>
+
             </div>
           </div>
                   

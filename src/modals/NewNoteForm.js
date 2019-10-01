@@ -34,8 +34,8 @@ class NewNoteForm extends React.Component {
       <Fragment>
         {
           this.props.friend ?
-          <div class="columns is-mobile">
-            <div class="column is-three-fifths is-offset-one-fifth">
+          <div className="columns is-mobile">
+            <div className="column is-three-fifths is-offset-one-fifth">
               <h2>{`got something on your mind about ${this.props.friend.name}?`}</h2>
               <form onSubmit={this.onSubmit}>
 

@@ -114,7 +114,6 @@ function addingNewInteraction(data) {
 }
 
 function addedInteraction(interaction) {
-  debugger
   return {
   type: 'ADDED_INTERACTION',
   payload: interaction
@@ -164,7 +163,13 @@ function deleteFriend(friendId){
   }
 }
 
-export { fetchingUser, addingNewFriend, addingNewImportantDate, addingNewNote, addingNewInteraction, deletingFriend, updatingFriend } 
+export { fetchingUser, 
+  addingNewFriend, 
+  addingNewImportantDate, 
+  addingNewNote, 
+  addingNewInteraction, 
+  deletingFriend, 
+  updatingFriend } 
 
 
 // UPDATING APPRECIATION IS NOW PART OF UPDATING FRIEND
