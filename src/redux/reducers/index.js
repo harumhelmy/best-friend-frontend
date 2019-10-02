@@ -4,6 +4,8 @@ const userReducer = (state = {}, action) => {
   switch(action.type) {
     case "FETCHED_USER":
       return JSON.parse(action.payload.user)
+    case "LOGOUT_USER":
+      return {}
     default:
       return state
   }
@@ -40,6 +42,8 @@ const friendsReducer = (state = [], action) => {
       })
     case "DELETE_FRIEND":
       return state.filter( friend => friend.id !== action.payload )
+    case "LOGOUT_USER":
+      return []
     default: 
       return state 
   }
@@ -51,6 +55,8 @@ const importantDatesReducer = (state = [], action) => {
       return action.payload.important_dates
     case "ADDED_IMPORTANT_DATE":
       return [...state, action.payload]
+    case "LOGOUT_USER":
+      return []
     default:
       return state
   }
@@ -62,6 +68,8 @@ const interactionsReducer = (state = [], action) => {
       return action.payload.interactions
     case "ADDED_INTERACTION":
       return [...state, action.payload]
+    case "LOGOUT_USER":
+      return []
     default:
       return state
   }
@@ -98,5 +106,3 @@ export default rootReducer
 //       return state
 //   }
 // }
-
-

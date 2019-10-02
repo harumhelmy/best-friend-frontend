@@ -1,16 +1,19 @@
 // USER ACTIONS 
+
+const token = () => {
+  if (localStorage.token){
+  return localStorage.token
+  }
+}
+
 function fetchedUser(user){
   return {
     type: "FETCHED_USER", 
     payload: user
   }
 }
-const token = () => {
-  return localStorage.token
-}
 
 function fetchingUserData() {
-  
   return (dispatch) => {
     if (token()) {
       fetch('http://localhost:3000/api/v1/profile', {
@@ -27,7 +30,7 @@ function fetchingUserData() {
           localStorage.removeItem('token')
         } else {
           dispatch(fetchedUser(user))}
-        })
+      })
     }
   } 
 }
@@ -46,7 +49,6 @@ function userLoginFetch(userInfo) {
     })
     .then(res => res.json())
     .then(data => {
-      debugger
       if (data.user && data.jwt) {
         localStorage.setItem('token', data.jwt)
         dispatch(fetchedUser(data))
@@ -57,12 +59,11 @@ function userLoginFetch(userInfo) {
   }
 }
 
-// function loginUser(user){
-//   return {
-//     type: "LOGIN_USER",
-//     payload: user
-//   }
-// }
+function loggingOut() {
+  return {
+    type: "LOGOUT_USER"
+  }
+}
 
 function addingNewFriend(data){
   return (dispatch) => {
@@ -225,6 +226,7 @@ function deleteFriend(friendId){
 
 export { fetchingUserData, 
   userLoginFetch,
+  loggingOut,
   addingNewFriend, 
   addingNewImportantDate, 
   addingNewNote, 

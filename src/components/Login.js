@@ -22,6 +22,7 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.userLoginFetch(this.state)
+    this.props.history.push('/home')
   }
 
   render (){
@@ -29,6 +30,7 @@ class Login extends Component {
       <Fragment>
         <h3>Login please</h3>
         <div className='container'>
+          
           <form onSubmit={this.handleSubmit}>
             <div className="field">
               <label className="label">Username</label>
@@ -54,7 +56,9 @@ class Login extends Component {
               </div>
             </div>
 
-            <button type='submit' className='ui button'>Login</button>
+            <button type='submit' 
+              className='ui button'> Login
+            </button>
           </form>
         </div> 
       </Fragment>
