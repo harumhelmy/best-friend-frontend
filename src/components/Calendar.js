@@ -39,6 +39,7 @@ class MyCalendar extends Component {
     return (
         <div className="container" style={{height: 500}}>
           <Calendar
+            popup
             events={this.props.importantDates}
             defaultDate={moment().toDate()}
             localizer={localizer}

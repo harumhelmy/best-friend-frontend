@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import moment from 'moment'
+
 class FriendCard extends React.Component {
 
   getFriendInteractions = () => {
@@ -27,12 +28,15 @@ class FriendCard extends React.Component {
         <Link to={`/friends/${id}`}
           style={{ textDecoration: 'none' }}>
           <div className='box'>
-              <strong><h4>{name}</h4></strong>
+              <strong>{name}</strong>
+                <br />
                 <small>{pronouns}</small>
               {
                 this.getMostRecentInteraction() ?
-              <p>Last interaction with {name} was {moment(this.getMostRecentInteraction().date).fromNow()}</p>
-              : null
+                <p> Last interaction with {name} was <br/> 
+                  {moment(this.getMostRecentInteraction().date).fromNow()}
+                </p>
+                : null
               }
               </div>
         </Link>
@@ -46,6 +50,5 @@ const mapStateToProps = (state) => {
     interactions: state.interactions
   }
 }
-
 
 export default connect(mapStateToProps)(FriendCard)

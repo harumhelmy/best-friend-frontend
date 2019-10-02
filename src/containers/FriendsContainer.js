@@ -15,11 +15,10 @@ class FriendsContainer extends React.Component{
         style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
 
         <div className='columns is-multiline'>
-
-        {
-          this.props.friends.map( friend => <FriendCard key={`friend-${friend.id}`} 
-              friend={friend} /> )
-        }
+          {
+            this.props.friends.map( friend => <FriendCard key={`friend-${friend.id}`} 
+                friend={friend} /> )
+          }
         </div>
       </div>
     </Fragment>
