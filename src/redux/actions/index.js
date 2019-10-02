@@ -1,23 +1,78 @@
 // USER ACTIONS 
-
 function fetchedUser(user){
-  return {type: "FETCHED_USER", payload: user}
+  return {
+    type: "FETCHED_USER", 
+    payload: user
+  }
+}
+const token = () => {
+  return localStorage.token
 }
 
-function fetchingUser() {
+function fetchingUserData() {
+  
   return (dispatch) => {
-    fetch('http://localhost:3000/api/v1/users/12')
-    .then(res => res.json())
-    .then(user => dispatch(fetchedUser(user)))
+    if (token()) {
+      fetch('http://localhost:3000/api/v1/profile', {
+        method: "GET",
+        headers: {
+          'content-type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${token()}`
+        }
+      })
+      .then(res => res.json())
+      .then(user => {
+        if(user.error){
+          localStorage.removeItem('token')
+        } else {
+          dispatch(fetchedUser(user))}
+        })
+    }
   } 
 }
 
+function userLoginFetch(userInfo) {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/api/v1/login`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: userInfo.username,
+        password: userInfo.password
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      debugger
+      if (data.user && data.jwt) {
+        localStorage.setItem('token', data.jwt)
+        dispatch(fetchedUser(data))
+      } else {
+        alert("Sorry, incorrect username or password")
+      }
+    })
+  }
+}
+
+// function loginUser(user){
+//   return {
+//     type: "LOGIN_USER",
+//     payload: user
+//   }
+// }
+
 function addingNewFriend(data){
+  const token = localStorage.token
+  debugger
   return (dispatch) => {
     fetch('http://localhost:3000/friends', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${token}`
       },
       body: JSON.stringify({
         name: data.name,
@@ -46,7 +101,7 @@ function addingNewImportantDate(data){
       method: 'POST',
       headers: {
         'content-type': 'application/json'
-      },
+            },
       body: JSON.stringify({
         title: data.title,
         date: data.date, 
@@ -55,7 +110,8 @@ function addingNewImportantDate(data){
         friend_id: data.friendId,
         // reminder: data.reminder
       })
-    }).then( res => res.json())
+    })
+    .then( res => res.json())
     .then( date => dispatch(addedImportantDate(date)) )
   }
 }
@@ -128,7 +184,7 @@ function updatingFriend(info) {
     fetch(`http://localhost:3000/friends/${info.friendId}`, {
       method: 'PATCH',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
       },
       body: JSON.stringify({
         [attributeKey]: info[attributeKey]
@@ -163,29 +219,11 @@ function deleteFriend(friendId){
   }
 }
 
-export { fetchingUser, 
+export { fetchingUserData, 
+  userLoginFetch,
   addingNewFriend, 
   addingNewImportantDate, 
   addingNewNote, 
   addingNewInteraction, 
   deletingFriend, 
   updatingFriend } 
-
-
-// UPDATING APPRECIATION IS NOW PART OF UPDATING FRIEND
-
-// function updatingAppreciation(info) {
-//   return (dispatch) => {
-//     fetch(`http://localhost:3000/friends/${info.friendId}`, {
-//       method: 'PATCH',
-//       headers: {
-//         'content-type': 'application/json'
-//       },
-//       body: JSON.stringify({
-//         appreciation: info.appreciation
-//       })
-//     })
-//     .then( res => res.json() )
-//     .then ( updated => dispatch(updatedFriend(info)) )
-//   }
-// }

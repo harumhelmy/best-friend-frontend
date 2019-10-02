@@ -16,7 +16,8 @@ class FriendsContainer extends React.Component{
 
         <div className='columns is-multiline'>
           {
-            this.props.friends.map( friend => <FriendCard key={`friend-${friend.id}`} 
+            this.props.friends.map( friend => <FriendCard 
+                key={`friend-${friend.id}`} 
                 friend={friend} /> )
           }
         </div>

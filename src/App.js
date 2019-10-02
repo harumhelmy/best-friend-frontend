@@ -15,13 +15,13 @@ import NewImportantDate from './modals/NewImportantDate'
 import NewNoteForm from './modals/NewNoteForm'
 import NewInteractionForm from './modals/NewInteractionForm'
 import { connect } from 'react-redux'
-import { fetchingUser } from './redux/actions/index'
+import { fetchingUserData } from './redux/actions/index'
 
 
 class App extends React.Component {
 
   componentDidMount(){
-    this.props.fetchingUser()
+    this.props.fetchingUserData()
   }
   
   
@@ -61,7 +61,7 @@ class App extends React.Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchingUser: () => { dispatch(fetchingUser()) }
+    fetchingUserData: () => { dispatch(fetchingUserData()) }
   }
 }
 

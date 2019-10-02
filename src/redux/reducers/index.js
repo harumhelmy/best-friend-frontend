@@ -3,7 +3,7 @@ import { combineReducers } from 'redux'
 const userReducer = (state = {}, action) => {
   switch(action.type) {
     case "FETCHED_USER":
-      return action.payload.user
+      return JSON.parse(action.payload.user)
     default:
       return state
   }
