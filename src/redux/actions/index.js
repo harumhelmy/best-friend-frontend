@@ -65,14 +65,12 @@ function userLoginFetch(userInfo) {
 // }
 
 function addingNewFriend(data){
-  const token = localStorage.token
-  debugger
   return (dispatch) => {
     fetch('http://localhost:3000/friends', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token()}`
       },
       body: JSON.stringify({
         name: data.name,
@@ -100,8 +98,9 @@ function addingNewImportantDate(data){
     fetch('http://localhost:3000/important_dates', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
-            },
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${token()}`
+        },
       body: JSON.stringify({
         title: data.title,
         date: data.date, 
@@ -154,7 +153,8 @@ function addingNewInteraction(data) {
     fetch('http://localhost:3000/interactions', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${token()}`
       },
       body: JSON.stringify({
         date: data.date,
@@ -185,6 +185,7 @@ function updatingFriend(info) {
       method: 'PATCH',
       headers: {
         'content-type': 'application/json',
+        'Authorization': `Bearer ${token()}`
       },
       body: JSON.stringify({
         [attributeKey]: info[attributeKey]
@@ -205,7 +206,10 @@ function updatedFriend(info){
 function deletingFriend(friendId) {
   return (dispatch) => {
     fetch(`http://localhost:3000/friends/${friendId}`, {
-      method: "DELETE"
+      method: "DELETE", 
+      headers: {
+        'Authorization': `Bearer ${token()}`
+      }
     })
     .then( res => res.json() )
     .then( deleted => dispatch(deleteFriend(friendId)))
