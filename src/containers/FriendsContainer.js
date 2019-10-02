@@ -11,16 +11,16 @@ class FriendsContainer extends React.Component{
         <h2>here's everyone! &hearts;</h2>
       </div>
 
-      <div className='container' style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
-    
+      <div className='container' 
+        style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
 
         <div className='columns is-multiline'>
 
         {
-          this.props.friends.map( friend => <FriendCard key={`friend-${friend.id}`} friend={friend} /> )
+          this.props.friends.map( friend => <FriendCard key={`friend-${friend.id}`} 
+              friend={friend} /> )
         }
         </div>
-
       </div>
     </Fragment>
     )

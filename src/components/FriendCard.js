@@ -1,18 +1,51 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
+import moment from 'moment'
+class FriendCard extends React.Component {
 
-const FriendCard = (props) => {
-  return (
-    <div className='column is-3'>
-      <Link to={`/friends/${props.friend.id}`}
-        style={{ textDecoration: 'none' }}>
-        <div className='box'>
-            <p>{props.friend.name}</p>
-              {props.friend.pronouns}
-            </div>
-      </Link>
-    </div>
-  )
+  getFriendInteractions = () => {
+    if (this.props.interactions){
+      return this.props.interactions.filter( interaction => 
+        interaction.friend_id === parseInt(this.props.friend.id))
+    }
+  }
+
+  getMostRecentInteraction = () => {
+    const copy = [...this.getFriendInteractions()].map( interaction => ({
+      ...interaction,
+      date: new Date(interaction.date)
+    }))
+    copy.sort((a,b) => a.date - b.date)
+    return copy[copy.length-1]
+  }
+
+  render(){
+    const {id, name, pronouns} = this.props.friend
+    return (
+      <div className='column is-3'>
+        <Link to={`/friends/${id}`}
+          style={{ textDecoration: 'none' }}>
+          <div className='box'>
+              <strong><h4>{name}</h4></strong>
+                <small>{pronouns}</small>
+              {
+                this.getMostRecentInteraction() ?
+              <p>Last interaction with {name} was {moment(this.getMostRecentInteraction().date).fromNow()}</p>
+              : null
+              }
+              </div>
+        </Link>
+      </div>
+    )
+  }
 }
 
-export default FriendCard
+const mapStateToProps = (state) => {
+  return {
+    interactions: state.interactions
+  }
+}
+
+
+export default connect(mapStateToProps)(FriendCard)

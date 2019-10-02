@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Navbar = () => {
   return (
     <div className='navbar is-spaced' >
-      <div className='navbar-brand'>
+      <div className='navbar-end'>
         <Link to='/home'>
           <img 
             src={require('../images/pineapple_logo.png')} 
