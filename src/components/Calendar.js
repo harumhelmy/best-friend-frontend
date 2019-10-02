@@ -3,7 +3,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import "react-big-calendar/lib/css/react-big-calendar.css";
-import ImportantDateDetail from './ImportantDateDetail'
+import ImportantDateModal from './ImportantDateModal'
 
 const localizer = momentLocalizer(moment)
 
@@ -36,7 +36,6 @@ class MyCalendar extends Component {
   }
 
   render(){
-    console.log(this.props.importantDates)
     return (
         <div className="container" style={{height: 500}}>
           <Calendar
@@ -46,7 +45,7 @@ class MyCalendar extends Component {
             views={['month']}
             onSelectEvent={event => this.showModal(event)}
           />
-          <ImportantDateDetail showModal={this.state.dateModalShown} 
+          <ImportantDateModal showModal={this.state.dateModalShown} 
             dateTitle={this.state.dateTitle}
             dateFriendName={this.state.dateFriendName}
             dateNote={this.state.dateNote}

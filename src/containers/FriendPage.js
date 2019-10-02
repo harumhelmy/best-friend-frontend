@@ -5,6 +5,7 @@ import EdiText from 'react-editext'
 import { deletingFriend, updatingFriend } from '../redux/actions/index'
 import Moment from 'react-moment'
 import Note from '../components/Note'
+import ImportantDateDetail from '../components/ImportantDateDetail'
 import Interaction from '../components/Interaction'
 
 class FriendPage extends React.Component {
@@ -39,8 +40,27 @@ class FriendPage extends React.Component {
     this.props.updatingFriend(info)
   }
 
-  render(){
+  sortedInteractions = () => {
+    if (this.props.interactions) {
+      const copy = [...this.props.interactions].map( interaction => ({
+        ...interaction, 
+        date: new Date(interaction.date)
+      }))
+    return copy.sort((a,b) => a.date - b.date ) 
+    }
+  }
 
+  sortedImportantDates = () => {
+    if (this.props.importantDates) {
+      const copy =[...this.props.importantDates].map( impDate => ({
+        ...impDate,
+        date: new Date(impDate.date)
+      }))
+    return copy.sort((a,b)=> a.date - b.date ) 
+    }
+  }
+
+  render(){
    const friendPage = () => {
      if (this.props.friend)  {
        const { id, name, pronouns, notes, appreciation } = this.props.friend 
@@ -79,7 +99,7 @@ class FriendPage extends React.Component {
                 <h3>interactions</h3>
                 { 
                   this.props.interactions ?
-                  this.props.interactions.map( interaction => 
+                  this.sortedInteractions().map( interaction => 
                     <Interaction interaction={interaction} /> 
                   )
                   : null
@@ -92,8 +112,7 @@ class FriendPage extends React.Component {
                 <h3>important dates</h3>
                 { 
                   this.props.importantDates ? 
-                  this.props.importantDates.map( date => 
-                    <div><li>{date.date}<p>{date.title}</p></li></div> 
+                  this.sortedImportantDates().map( date => <ImportantDateDetail date={date}/>
                   ) 
                   : null
                 }

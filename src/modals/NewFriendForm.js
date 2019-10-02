@@ -34,8 +34,8 @@ class NewFriendForm extends React.Component {
 
   render() {
     return (
-      <div class="columns is-mobile">
-        <div class="column is-three-fifths is-offset-one-fifth">
+      <div className="columns is-mobile">
+        <div className="column is-three-fifths is-offset-one-fifth">
           <h3>add a new friend</h3>
           <form onSubmit={this.onSubmit}>
                 <label>name</label>
