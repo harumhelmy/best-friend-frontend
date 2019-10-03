@@ -20,7 +20,6 @@ class MyCalendar extends Component {
   }
   
   showModal = (event)=>{
-    console.log(event.friend)
     this.setState({
       dateModalShown: true,
       dateTitle: event.title,
@@ -61,7 +60,6 @@ const mapStateToProps = (state) => {
   return {
     importantDates: state.importantDates.map( date => ({
       id: date.id, 
-      friend_id: date.friend_id,
       title: date.title,
       note: date.note,
       start: moment(date.date)._d, 

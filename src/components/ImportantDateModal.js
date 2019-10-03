@@ -23,4 +23,3 @@ const ImportantDateDetail = (props) => {
 }
 
 export default ImportantDateDetail
-

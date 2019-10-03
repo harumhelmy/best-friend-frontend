@@ -3,7 +3,6 @@ import { withRouter, Link  } from 'react-router-dom'
 import { connect } from 'react-redux'
 import EdiText from 'react-editext'
 import { deletingFriend, updatingFriend } from '../redux/actions/index'
-import Moment from 'react-moment'
 import Note from '../components/Note'
 import ImportantDateDetail from '../components/ImportantDateDetail'
 import Interaction from '../components/Interaction'
@@ -45,18 +44,18 @@ class FriendPage extends React.Component {
       const copy = [...this.props.interactions].map( interaction => ({
         ...interaction, 
         date: new Date(interaction.date)
-      }))
-    return copy.sort((a,b) => a.date - b.date ) 
+      })).sort((a,b) => a.date - b.date ) 
+    return copy
     }
   }
 
   sortedImportantDates = () => {
     if (this.props.importantDates) {
-      const copy =[...this.props.importantDates].map( impDate => ({
+      const copy = [...this.props.importantDates].map( impDate => ({
         ...impDate,
         date: new Date(impDate.date)
-      }))
-    return copy.sort((a,b)=> a.date - b.date ) 
+      })).sort((a,b)=> a.date - b.date ) 
+    return copy
     }
   }
 

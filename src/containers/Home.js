@@ -1,9 +1,9 @@
 import React, {Fragment} from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import ImportantDateDetail  from '../components/ImportantDateDetail'
 
 const Home = (props) => {
-  console.log(props.importantDates)
     return(
     <Fragment>
       {
@@ -18,6 +18,14 @@ const Home = (props) => {
             <br/> 
             <Link to='/friends'><h3>see all your friends :)</h3></Link>
             <h3>upcoming important dates:</h3>
+            {
+              props.importantDates ?
+              props.importantDates.map( date =>  
+                <ImportantDateDetail date={date}/>
+              )
+              :
+              null
+            }
           </div>
           <div className='column'>
             <img 
@@ -38,12 +46,11 @@ const Home = (props) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
-    importantDates: [...state.importantDates].map( date => ({
+    importantDates: [...state.importantDates].filter( date =>     new Date(date.date) > Date.now()).map( date => ({
         ...date, 
         date: new Date(date.date)
-      })).sort((a,b) => a.date - b.date)
+      })).sort((a,b) => a.date - b.date).slice(0,5)
     }
 }
-
 
 export default connect(mapStateToProps)(Home)
