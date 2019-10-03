@@ -15,17 +15,17 @@ class MyCalendar extends Component {
       dateModalShown: false,
       dateTitle: '',
       note: '',
-      dateFriendName: ''
+      dateFriend: {}
     }
   }
   
   showModal = (event)=>{
-    console.log(event.title)
+    console.log(event.friend)
     this.setState({
       dateModalShown: true,
       dateTitle: event.title,
       dateNote: event.note,
-      dateFriendName: event.friendName
+      dateFriend: event.friend
     })
   }
 
@@ -48,7 +48,7 @@ class MyCalendar extends Component {
           />
           <ImportantDateModal showModal={this.state.dateModalShown} 
             dateTitle={this.state.dateTitle}
-            dateFriendName={this.state.dateFriendName}
+            dateFriend={this.state.dateFriend}
             dateNote={this.state.dateNote}
             unshowModal={this.unshowModal}
           />
@@ -66,7 +66,7 @@ const mapStateToProps = (state) => {
       note: date.note,
       start: moment(date.date)._d, 
       end: moment(date.date)._d, 
-      friendName: date.friend.name,
+      friend: date.friend,
       allDay: true }))
   }
 }

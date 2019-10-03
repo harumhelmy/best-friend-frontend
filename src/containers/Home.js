@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 const Home = (props) => {
+  console.log(props.importantDates)
     return(
     <Fragment>
       {
@@ -16,7 +17,7 @@ const Home = (props) => {
             <Link to='/newfriend'><h3>add a new friend</h3></Link>
             <br/> 
             <Link to='/friends'><h3>see all your friends :)</h3></Link>
-            <h3>your recent friend interactions:</h3>
+            <h3>upcoming important dates:</h3>
           </div>
           <div className='column'>
             <img 
@@ -37,9 +38,9 @@ const Home = (props) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
-    interactions: [...state.interactions].map( interaction => ({
-        ...interaction, 
-        date: new Date(interaction.date)
+    importantDates: [...state.importantDates].map( date => ({
+        ...date, 
+        date: new Date(date.date)
       })).sort((a,b) => a.date - b.date)
     }
 }
