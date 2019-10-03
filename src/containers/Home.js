@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 const Home = (props) => {
     return(
     <Fragment>
+      {
+        props.currentUser.username ?
       <div className='container'>
         <div className='hero'>
           <h1 className='title'>Hi, {props.currentUser.username}! Welcome to bestFriend. </h1>
@@ -24,11 +26,9 @@ const Home = (props) => {
           </div>
         </div>
       </div>
-      {/* <img 
-          src={require('../images/undraw_horror_movie_3988.svg')} 
-          alt='an illustration of four people hanging out' 
-          style={{width: 200, height: 200, justifyContent: 'flex-end'}}
-        /> */}
+      :
+      null
+      }
     </Fragment>
     )
 }
