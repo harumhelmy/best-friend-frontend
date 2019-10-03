@@ -10,19 +10,26 @@ const Home = (props) => {
         props.currentUser.username ?
       <div className='container'>
         <div className='hero'>
-          <h1 className='title'>Hi, {props.currentUser.username}! Welcome to bestFriend. </h1>
+          <h1 className='title'>hello, {props.currentUser.username}! </h1>
         </div>
         <div className='columns'>
           <div className='column'>
-            <Link to='/newfriend'><h3>add a new friend</h3></Link>
+            <Link to='/newfriend' 
+              className='button is-normal'
+              style={{textDecoration: 'none'}}>
+                add a new friend
+            </Link>
             <br/> 
-            <Link to='/friends'><h3>see all your friends :)</h3></Link>
-            <h3>upcoming important dates:</h3>
+            <Link to='/friends'
+              className='button is-normal'
+              style={{textDecoration: 'none'}}>see all your friends :)</Link>
             {
-              props.importantDates ?
-              props.importantDates.map( date =>  
-                <ImportantDateDetail date={date}/>
-              )
+              props.importantDates.length !== 0 ?
+              <Fragment>
+                <h3>upcoming important dates:</h3>
+                {props.importantDates.map( date =>  
+                  <ImportantDateDetail date={date}/>)}
+              </Fragment>
               :
               null
             }

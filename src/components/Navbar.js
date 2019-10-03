@@ -15,17 +15,17 @@ const Navbar = (props) => {
     <div className='navbar is-spaced' >
       <div className='navbar-brand'>
         <h2>best</h2>
-      <Link to='/about'>
+          <Link to='/about'>
             <img 
               src={require('../images/pineapple_logo.png')} 
               alt='an illustration of four people hanging out' 
               style={{width: 50, height: 50}}
             />
           </Link>
-          <h2>friend</h2>
+        <h2>Friend</h2>
       </div>
+
       <div className='navbar-end'>
-          
           
         {
           props.currentUser.username ?
@@ -45,7 +45,6 @@ const Navbar = (props) => {
             <Link to='/login' className='navbar-item'>
               login</Link>
           </Fragment>
-          
         }
           
       </div>

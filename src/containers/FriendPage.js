@@ -104,7 +104,9 @@ class FriendPage extends React.Component {
                   : null
                 }
                   <br/>
-                <Link to={`/friends/${id}/newinteraction`}> add a new interaction </Link>
+                <Link to={`/friends/${id}/newinteraction`}
+                  className='button is-normal'
+                  style={{textDecoration: 'none'}}> add a new interaction </Link>
               </div>
 
               <div className='box'>
@@ -117,7 +119,9 @@ class FriendPage extends React.Component {
                 }
                 
                 <br />
-                <Link to={`/friends/${id}/newimpdate`}> add a new important date </Link>
+                <Link to={`/friends/${id}/newimpdate`}
+                  className='button is-normal'
+                  style={{textDecoration: 'none'}}> add a new important date </Link>
               </div>
 
               <br />
@@ -153,7 +157,9 @@ class FriendPage extends React.Component {
                   /> )  
                 }
                 <br />
-                <Link to={`/friends/${id}/newnote`}> add a new note about {name} </Link>
+                <Link to={`/friends/${id}/newnote`}
+                  className='button is-normal'
+                  style={{textDecoration: 'none'}}> add a new note about {name} </Link>
               </div>
 
             </div>

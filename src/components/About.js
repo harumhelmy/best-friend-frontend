@@ -25,7 +25,11 @@ const About = (props) => {
             {
               !props.currentUser.username ?
             <div className='container'>
-              <Link to='/signup'><strong>create an account</strong></Link> / <Link to='/login'><strong>login</strong></Link>
+              <Link to='/signup'
+                className='button is-normal'
+                style={{textDecoration: 'none'}}>
+              <strong>create an account</strong></Link> <Link to='/login' className='button is-normal'
+              style={{textDecoration: 'none'}}><strong>login</strong></Link>
             </div>
             :
             null
