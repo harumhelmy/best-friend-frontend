@@ -5,7 +5,7 @@ const ImportantDateDetail = (props) => {
   const {date, title} = props.date
   return (
     <div>
-      <li>{moment(date).format('LL')}
+      <li><strong>{moment(date).format('LL')}</strong>
       <p>{title}</p></li>
     </div> 
   )

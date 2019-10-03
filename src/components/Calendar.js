@@ -1,4 +1,4 @@
-import React, {Fragment, Component} from 'react'
+import React, {Component} from 'react'
 import { Calendar, momentLocalizer } from 'react-big-calendar'
 import { connect } from 'react-redux'
 import moment from 'moment'

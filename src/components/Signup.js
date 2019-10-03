@@ -23,6 +23,7 @@ class Signup extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     this.props.userPostFetch(this.state)
+    this.props.history.push('/home')
   }
 
   render() {

@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import './App.scss';
 import './App.sass';
-import { Route, Switch, withRouter } from 'react-router-dom'
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom'
 import LoginContainer from './containers/LoginContainer'
 import Signup from './components/Signup'
 import Navbar from './components/Navbar'
@@ -20,11 +20,6 @@ import { fetchingUserData } from './redux/actions/index'
 
 class App extends React.Component {
 
-  componentDidMount(){
-    this.props.fetchingUserData()
-  }
-  
-  
   render(){
     return (
       <Fragment>
@@ -33,11 +28,11 @@ class App extends React.Component {
             <Route exact path='/'
               component={About}/>
             <Route exact path='/login' 
-              component={LoginContainer}/>
+              render={ () => this.props.currentUser.username ? <Redirect to='/home' /> : <LoginContainer/> } />
             <Route exact path='/signup'
               component={Signup}/>
             <Route exact path='/home' 
-              component={Home}/>
+              component={Home} />
             <Route exact path='/friends' 
               component={FriendsContainer} /> 
             <Route exact path='/about' 
@@ -61,10 +56,16 @@ class App extends React.Component {
   } 
 }
 
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchingUserData: () => { dispatch(fetchingUserData()) }
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

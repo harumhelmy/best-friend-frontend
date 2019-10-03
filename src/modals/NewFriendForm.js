@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react'
 import { connect } from 'react-redux'
 import { addingNewFriend } from '../redux/actions/index'
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class NewFriendForm extends React.Component {
 

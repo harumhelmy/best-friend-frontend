@@ -1,7 +1,7 @@
 import React, {Fragment} from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import ImportantDateDetail  from '../components/ImportantDateDetail'
+import DateDetail from '../components/ImpDateDetailHome'
 
 const Home = (props) => {
     return(
@@ -12,8 +12,20 @@ const Home = (props) => {
         <div className='hero'>
           <h1 className='title'>hello, {props.currentUser.username}! </h1>
         </div>
+        
         <div className='columns'>
           <div className='column'>
+                {
+                props.importantDates.length !== 0 
+                ?
+                <div className='box'>
+                  <h3>important friend dates coming up soon:</h3>
+                  {props.importantDates.map( date =>  
+                    <DateDetail date={date}/>)}
+                </div>
+                :
+                null
+                }
             <Link to='/newfriend' 
               className='button is-normal'
               style={{textDecoration: 'none'}}>
@@ -23,16 +35,7 @@ const Home = (props) => {
             <Link to='/friends'
               className='button is-normal'
               style={{textDecoration: 'none'}}>see all your friends :)</Link>
-            {
-              props.importantDates.length !== 0 ?
-              <Fragment>
-                <h3>upcoming important dates:</h3>
-                {props.importantDates.map( date =>  
-                  <ImportantDateDetail date={date}/>)}
-              </Fragment>
-              :
-              null
-            }
+            
           </div>
           <div className='column'>
             <img 
@@ -53,7 +56,8 @@ const Home = (props) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
-    importantDates: [...state.importantDates].filter( date =>     new Date(date.date) > Date.now()).map( date => ({
+    importantDates: [...state.importantDates].filter( date => 
+      new Date(date.date) > Date.now()).map( date => ({
         ...date, 
         date: new Date(date.date)
       })).sort((a,b) => a.date - b.date).slice(0,5)

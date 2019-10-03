@@ -19,16 +19,18 @@ class FriendsContainer extends React.Component{
         </div>
         :
         <Fragment>
-          <section class="hero">
-            <div class="hero-body">
-              <div class="container">
-                <h1 class="title">
+        <div className='container'>
+          <div className="hero">
+            <div className="hero-body">
+              <div className="container">
+                <h1 className="title">
                   here's everyone &hearts;
                 </h1>
                 <small><Link to='/newfriend'>go here to add a new friend, if you wanna</Link></small>
               </div>
             </div>
-          </section>
+          </div>
+        </div>
 
       <div className='container' 
         style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 

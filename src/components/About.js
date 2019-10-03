@@ -4,8 +4,8 @@ import {connect} from 'react-redux'
 
 const About = (props) => {
   return (
-    <div className="columns is-mobile">
-        <div className="column is-5 is-offset-1">
+    <div className="columns">
+        <div className="column is-5 is-three-fifths">
           <img 
             src={require('../images/undraw_happy_women.svg')} 
             alt='an illustration of four people hanging out' 

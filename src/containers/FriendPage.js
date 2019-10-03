@@ -65,7 +65,7 @@ class FriendPage extends React.Component {
        const { id, name, pronouns, notes, appreciation } = this.props.friend 
        return (
       <Fragment>
-
+      <div className='container'>
         <section className='hero'>
           <div className='hero-body'>
             <h1 className='title'>
@@ -79,14 +79,15 @@ class FriendPage extends React.Component {
                 /> 
             </h1>
 
-            <EdiText type='text'
-              value={pronouns}
-              onSave={this.pronounsSave}
-              editButtonClassName="fas fa-pencil-alt"
-            />
+              <EdiText type='text'
+                value={pronouns}
+                onSave={this.pronounsSave}
+                editButtonClassName="fas fa-pencil-alt"
+              />
 
           </div>
         </section> 
+      </div>
         
         <section className='container'>
           <br/>
@@ -106,7 +107,7 @@ class FriendPage extends React.Component {
                   <br/>
                 <Link to={`/friends/${id}/newinteraction`}
                   className='button is-normal'
-                  style={{textDecoration: 'none'}}> add a new interaction </Link>
+                  style={{textDecoration: 'none'}}> add an interaction with {name} </Link>
               </div>
 
               <div className='box'>
