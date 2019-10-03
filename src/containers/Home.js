@@ -13,9 +13,10 @@ const Home = (props) => {
         </div>
         <div className='columns'>
           <div className='column'>
-          <Link to='/newfriend'><h3>add a new friend</h3></Link>
-          <br/> 
-          <Link to='/friends'><h3>see all your friends :)</h3></Link>
+            <Link to='/newfriend'><h3>add a new friend</h3></Link>
+            <br/> 
+            <Link to='/friends'><h3>see all your friends :)</h3></Link>
+            <h3>your recent friend interactions:</h3>
           </div>
           <div className='column'>
             <img 
@@ -35,8 +36,13 @@ const Home = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser
-  }
+    currentUser: state.currentUser,
+    interactions: [...state.interactions].map( interaction => ({
+        ...interaction, 
+        date: new Date(interaction.date)
+      })).sort((a,b) => a.date - b.date)
+    }
 }
+
 
 export default connect(mapStateToProps)(Home)

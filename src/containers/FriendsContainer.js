@@ -1,6 +1,7 @@
 import React, {Fragment} from 'react';
 import FriendCard from '../components/FriendCard'
 import { connect } from 'react-redux'
+import NewFriendForm from '../modals/NewFriendForm'
 import { Link } from 'react-router-dom'
 
 class FriendsContainer extends React.Component{
@@ -10,27 +11,55 @@ class FriendsContainer extends React.Component{
     <Fragment>
       { 
         this.props.friends.length === 0 ?
-        <Fragment>
-          <h2>start adding friends! &hearts; </h2>
-          <Link to='/newfriend'>add a new friend</Link>
-        </Fragment>
+        <div className="columns is-mobile">
+        <div className="column is-three-fifths is-offset-one-fifth">
+            <h2>start adding friends! &hearts; </h2>
+            <NewFriendForm />
+          </div>
+        </div>
         :
         <Fragment>
-      <div className='container'>
-        <h2>here's everyone! &hearts;</h2>
-      </div>
+          <section class="hero">
+            <div class="hero-body">
+              <div class="container">
+                <h1 class="title">
+                  here's everyone &hearts;
+                </h1>
+                <small><Link to='/newfriend'>go here to add a new friend, if you wanna</Link></small>
+              </div>
+            </div>
+          </section>
 
       <div className='container' 
         style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> 
 
         <div className='columns is-multiline'>
           {
-            this.props.friends.map( friend => <FriendCard 
-                key={`friend-${friend.id}`} 
-                friend={friend} /> )
+            this.props.friends.length < 2 ?
+
+            this.props.friends.map( friend => {
+              return (
+              <div className='column is-8'>
+              <FriendCard 
+                  key={`friend-${friend.id}`} 
+                  friend={friend} /> 
+              </div> ) 
+            })
+              :
+             this.props.friends.map( friend => {
+              return (
+              <div className='column is-3'>
+              <FriendCard 
+                  key={`friend-${friend.id}`} 
+                  friend={friend} /> 
+              </div> ) 
+            })
+             
           }
         </div>
       </div>
+
+    
       </Fragment>
       }
     </Fragment>

@@ -36,7 +36,7 @@ class NewFriendForm extends React.Component {
     return (
       <div className="columns is-mobile">
         <div className="column is-three-fifths is-offset-one-fifth">
-          <h3>add a new friend</h3>
+          <h3>add a friend you'd like to stay in touch with</h3>
           <form onSubmit={this.onSubmit}>
                 <label>name</label>
                 <input className='input'

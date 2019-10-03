@@ -24,7 +24,7 @@ class FriendCard extends React.Component {
   render(){
     const {id, name, pronouns} = this.props.friend
     return (
-      <div className='column is-3'>
+      <div className='container'>
         <Link to={`/friends/${id}`}
           style={{ textDecoration: 'none' }}>
           <div className='box'>
@@ -33,8 +33,7 @@ class FriendCard extends React.Component {
                 <small>{pronouns}</small>
               {
                 this.getMostRecentInteraction() ?
-                <p> Last interaction with {name} was <br/> 
-                  {moment(this.getMostRecentInteraction().date).fromNow()}
+                <p> Last interaction with {name} was {moment(this.getMostRecentInteraction().date).fromNow()}
                 </p>
                 : null
               }
