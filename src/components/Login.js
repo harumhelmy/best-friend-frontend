@@ -28,7 +28,7 @@ class Login extends Component {
   render (){
     return (
       <Fragment>
-        <h3>Login please</h3>
+        <h3>log yourself in:</h3>
         <div className='container'>
           
           <form onSubmit={this.handleSubmit}>
@@ -72,4 +72,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default withRouter(connect(null, mapDispatchToProps)(Login))

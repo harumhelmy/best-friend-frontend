@@ -2,10 +2,9 @@ import React, {Fragment} from 'react';
 import './App.scss';
 import './App.sass';
 import { Route, Switch, withRouter } from 'react-router-dom'
-import Login from './components/Login'
+import LoginContainer from './containers/LoginContainer'
 import Navbar from './components/Navbar'
 import Home from './containers/Home'
-import Signup from './components/Signup'
 import About from './components/About'
 import Calendar from './components/Calendar'
 import FriendPage from './containers/FriendPage'
@@ -30,10 +29,8 @@ class App extends React.Component {
       <Fragment>
         <Navbar />
           <Switch> 
-            <Route exact path='/signup' 
-              component={Signup} />
             <Route exact path='/login' 
-              component={Login}/>
+              component={LoginContainer}/>
             <Route exact path='/home' 
               component={Home}/>
             <Route exact path='/friends' 
