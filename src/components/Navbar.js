@@ -13,9 +13,19 @@ const Navbar = (props) => {
 
   return (
     <div className='navbar is-spaced' >
+      <div className='navbar-brand'>
+        <h2>best</h2>
+      <Link to='/about'>
+            <img 
+              src={require('../images/pineapple_logo.png')} 
+              alt='an illustration of four people hanging out' 
+              style={{width: 50, height: 50}}
+            />
+          </Link>
+          <h2>friend</h2>
+      </div>
       <div className='navbar-end'>
           
-          <Link to='/about' className='navbar-item'>about bestFriend</Link>
           
         {
           props.currentUser.username ?
@@ -24,22 +34,20 @@ const Navbar = (props) => {
               home</Link> 
             <Link to='/friends' className='navbar-item'>friends</Link>
             <Link to='/calendar' className='navbar-item'>calendar</Link>
+            <Link to='/about' className='navbar-item'>about bestFriend</Link>
             <a className='navbar-item'
             style={{textDecoration: 'underline'}}
             onClick={logout}>logout</a>
           </Fragment>
           :
-          <Link to='/login' className='navbar-item'>
-            login</Link>
+          <Fragment>
+            <Link to='/about' className='navbar-item'>about bestFriend</Link>
+            <Link to='/login' className='navbar-item'>
+              login</Link>
+          </Fragment>
           
         }
-          <Link to='/about'>
-            <img 
-              src={require('../images/pineapple_logo.png')} 
-              alt='an illustration of four people hanging out' 
-              style={{width: 50, height: 50}}
-            />
-          </Link>
+          
       </div>
     </div>
   )

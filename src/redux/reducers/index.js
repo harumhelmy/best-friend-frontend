@@ -6,6 +6,8 @@ const userReducer = (state = {}, action) => {
       return JSON.parse(action.payload.user)
     case "LOGOUT_USER":
       return {}
+    case "CREATED_USER":
+      return JSON.parse(action.payload.user)
     default:
       return state
   }

@@ -28,24 +28,24 @@ class Login extends Component {
   render (){
     return (
       <Fragment>
-        <h3>log yourself in:</h3>
+        <h3>log your wonderful self in!</h3>
         <div className='container'>
           
           <form onSubmit={this.handleSubmit}>
             <div className="field">
-              <label className="label">Username</label>
+              <label className="label">username</label>
               <div className="control">
                 <input className="input" 
                   type="text" 
                   name='username'
-                  placeholder="Your username pls"
+                  placeholder="your username pls"
                   onChange={this.handleChange} 
                 />
               </div>
             </div>
 
             <div className="field">
-              <label className="label">Password</label>
+              <label className="label">password</label>
               <div className="control">
                 <input className="input" 
                   type="password" 

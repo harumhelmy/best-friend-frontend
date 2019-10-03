@@ -3,6 +3,7 @@ import './App.scss';
 import './App.sass';
 import { Route, Switch, withRouter } from 'react-router-dom'
 import LoginContainer from './containers/LoginContainer'
+import Signup from './components/Signup'
 import Navbar from './components/Navbar'
 import Home from './containers/Home'
 import About from './components/About'
@@ -29,8 +30,12 @@ class App extends React.Component {
       <Fragment>
         <Navbar />
           <Switch> 
+            <Route exact path='/'
+              component={About}/>
             <Route exact path='/login' 
               component={LoginContainer}/>
+            <Route exact path='/signup'
+              component={Signup}/>
             <Route exact path='/home' 
               component={Home}/>
             <Route exact path='/friends' 

@@ -6,6 +6,7 @@ const token = () => {
   }
 }
 
+// also effectively logs in people
 function fetchedUser(user){
   return {
     type: "FETCHED_USER", 
@@ -33,6 +34,35 @@ function fetchingUserData() {
       })
     }
   } 
+}
+
+function userPostFetch(user) {
+  return dispatch => {
+    fetch('http://localhost:3000/api/v1/users', {
+      method: "POST",
+      headers: {
+        'content-type': 'application/json',
+        accept: 'application/json'
+      },
+      body: JSON.stringify({user})
+    })
+    .then( res => res.json() )
+    .then( data => {
+      if(data.error){
+        alert("oop, we couldn't make an account, please try again later")
+      } else {
+        localStorage.setItem("token", data.jwt)
+        dispatch(createdUser(data))
+      }
+    })
+  }
+}
+
+function createdUser(data){
+  return {
+    type: 'CREATED_USER',
+    payload: data
+  }
 }
 
 function userLoginFetch(userInfo) {
@@ -225,6 +255,7 @@ function deleteFriend(friendId){
 }
 
 export { fetchingUserData, 
+  userPostFetch,
   userLoginFetch,
   loggingOut,
   addingNewFriend, 

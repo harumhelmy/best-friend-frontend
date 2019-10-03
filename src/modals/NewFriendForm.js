@@ -22,7 +22,6 @@ class NewFriendForm extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    debugger
     const data = {
       userId: this.props.currentUser.id,
       name: this.state.name,
