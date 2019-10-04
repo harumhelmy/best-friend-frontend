@@ -4,8 +4,10 @@ import {connect} from 'react-redux'
 
 const About = (props) => {
   return (
+  <div className='container' 
+    style={{alignItems: 'center'}}>
     <div className="columns">
-        <div className="column is-5 is-three-fifths">
+        <div className="column is-5 is-three-fifths is-offset-1">
           <img 
             src={require('../images/undraw_happy_women.svg')} 
             alt='an illustration of four people hanging out' 
@@ -35,6 +37,7 @@ const About = (props) => {
             null
             }
         </div>
+    </div>
     </div>
   )
 }

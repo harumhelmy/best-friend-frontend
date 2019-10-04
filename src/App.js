@@ -20,6 +20,10 @@ import { fetchingUserData } from './redux/actions/index'
 
 class App extends React.Component {
 
+  componentDidMount(){
+    this.props.fetchingUserData()
+  }
+
   render(){
     return (
       <Fragment>
