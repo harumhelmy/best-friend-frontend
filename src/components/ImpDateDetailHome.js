@@ -10,7 +10,7 @@ class ImpDateDetailHome extends React.Component {
 
     return (
       <Fragment>
-        <li><strong>{moment(date).format('LL')}</strong></li>
+        <li><strong>{moment(date).format('LL')}</strong> // <strong>{moment(date).fromNow()}</strong></li>
         <p>{title}</p>
       </Fragment>
     )
