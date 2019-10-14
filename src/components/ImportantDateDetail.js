@@ -29,5 +29,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-// export default ImportantDateDetail
 export default connect(null, mapDispatchToProps)(ImportantDateDetail)
