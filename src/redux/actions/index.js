@@ -123,6 +123,53 @@ function addedFriend(friend){
   }
 }
 
+function updatingFriend(info) {
+
+  const attributeKey = Object.keys(info)[0]
+
+  return (dispatch) => {
+    fetch(`http://localhost:3000/friends/${info.friendId}`, {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Bearer ${token()}`
+      },
+      body: JSON.stringify({
+        [attributeKey]: info[attributeKey]
+      })
+    })
+    .then( res => res.json() )
+    .then ( updated => dispatch(updatedFriend(info)) )
+  }
+}
+
+function updatedFriend(info){
+  return {
+    type: "UPDATED_FRIEND",
+    payload: info
+  }
+}
+
+function deletingFriend(friendId) {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/friends/${friendId}`, {
+      method: "DELETE", 
+      headers: {
+        'Authorization': `Bearer ${token()}`
+      }
+    })
+    .then( res => res.json() )
+    .then( deleted => dispatch(deleteFriend(friendId)))
+  }
+}
+
+function deleteFriend(friendId){
+  return {
+    type: "DELETE_FRIEND",
+    payload: friendId
+  }
+}
+
 // important date actions 
 function addingNewImportantDate(data){
   return (dispatch) => {
@@ -227,52 +274,7 @@ function addedInteraction(interaction) {
   }
 }
 
-function updatingFriend(info) {
 
-  const attributeKey = Object.keys(info)[0]
-
-  return (dispatch) => {
-    fetch(`http://localhost:3000/friends/${info.friendId}`, {
-      method: 'PATCH',
-      headers: {
-        'content-type': 'application/json',
-        'Authorization': `Bearer ${token()}`
-      },
-      body: JSON.stringify({
-        [attributeKey]: info[attributeKey]
-      })
-    })
-    .then( res => res.json() )
-    .then ( updated => dispatch(updatedFriend(info)) )
-  }
-}
-
-function updatedFriend(info){
-  return {
-    type: "UPDATED_FRIEND",
-    payload: info
-  }
-}
-
-function deletingFriend(friendId) {
-  return (dispatch) => {
-    fetch(`http://localhost:3000/friends/${friendId}`, {
-      method: "DELETE", 
-      headers: {
-        'Authorization': `Bearer ${token()}`
-      }
-    })
-    .then( res => res.json() )
-    .then( deleted => dispatch(deleteFriend(friendId)))
-  }
-}
-
-function deleteFriend(friendId){
-  return {
-    type: "DELETE_FRIEND",
-    payload: friendId
-  }
-}
 
 export { fetchingUserData, 
   userPostFetch,
