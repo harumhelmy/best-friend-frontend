@@ -5,11 +5,19 @@ import NewFriendForm from '../modals/NewFriendForm'
 import { Link } from 'react-router-dom'
 
 class FriendsContainer extends React.Component{
+  constructor(){
+    super()
+    this.state = { isLoading : true }
+  }
+
+  componentDidMount(){
+    this.setState({ isLoading : false })
+  }
   
   render(){
     return(
     <Fragment>
-      { 
+      { this.state.isLoading ? null : 
         this.props.friends.length === 0 ?
         <div className="columns is-mobile">
         <div className="column is-three-fifths is-offset-one-fifth">
@@ -63,7 +71,7 @@ class FriendsContainer extends React.Component{
 
     
       </Fragment>
-      }
+      }}
     </Fragment>
     )
   }

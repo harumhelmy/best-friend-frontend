@@ -153,6 +153,26 @@ function addedImportantDate(date){
   }
 }
 
+function deletingImportantDate(dateId){
+  return (dispatch) => {
+    fetch(`http://localhost:3000/important_dates/${dateId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token()}`
+      }
+    })
+    .then( res => res.json() )
+    .then( deleted => dispatch(deleteImportantDate(dateId)))
+  }
+}
+
+function deleteImportantDate(dateId){
+  return {
+    type: "DELETE_IMPORTANT_DATE",
+    payload: dateId
+  }
+}
+
 // note actions 
 function addingNewNote(data){
   return (dispatch) => {
@@ -259,7 +279,8 @@ export { fetchingUserData,
   userLoginFetch,
   loggingOut,
   addingNewFriend, 
-  addingNewImportantDate, 
+  addingNewImportantDate,
+  deletingImportantDate,
   addingNewNote, 
   addingNewInteraction, 
   deletingFriend, 

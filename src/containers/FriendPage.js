@@ -177,11 +177,11 @@ class FriendPage extends React.Component {
    }
 
     return (
-    <div>
-      {friendPage()}
-      <br/>
-      <Link to='/friends'>Back to friends list</Link>
-    </div>
+      <div>
+        {friendPage()}
+        <br/>
+        <Link to='/friends'>Back to friends list</Link>
+      </div>
     )
   }
 }
