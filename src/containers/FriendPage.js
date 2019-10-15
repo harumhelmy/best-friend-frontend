@@ -107,22 +107,20 @@ class FriendPage extends React.Component {
                   <br/>
                 <Link to={`/friends/${id}/newinteraction`}
                   className='button is-normal'
-                  style={{textDecoration: 'none'}}> add an interaction with {name} </Link>
+                  style={{textDecoration: 'none'}}> add an interaction with {name} 
+                </Link>
               </div>
 
               <div className='box'>
                 <h3>important dates</h3>
                 { 
                   this.props.importantDates ? 
-                  this.sortedImportantDates().map( date => <ImportantDateDetail date={date}/>
+                    this.sortedImportantDates().map( date => <ImportantDateDetail date={date} 
+                      friend={this.props.friend}
+                    />
                   ) 
                   : null
                 }
-                
-                <br />
-                <Link to={`/friends/${id}/newimpdate`}
-                  className='button is-normal'
-                  style={{textDecoration: 'none'}}> add a new important date </Link>
               </div>
 
               <br />

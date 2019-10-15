@@ -178,7 +178,7 @@ function addingNewImportantDate(data){
       headers: {
         'content-type': 'application/json',
         'Authorization': `Bearer ${token()}`
-        },
+      },
       body: JSON.stringify({
         title: data.title,
         date: data.date, 
@@ -212,6 +212,19 @@ function deletingImportantDate(dateId){
     .then( deleted => dispatch(deleteImportantDate(dateId)))
   }
 }
+
+// function updatingImportantDate(dateId){
+//   return dispatch => {
+//     fetch(fetch(`http://localhost:3000/important_dates/${dateId}`, {
+//       method: 'PATCH',
+//       headers: {
+//         'content-type': 'application/json',
+//         'Authorization': `Bearer ${token()}`
+//       },
+//       body: 
+//     })
+//   }
+// }
 
 function deleteImportantDate(dateId){
   return {
@@ -273,7 +286,6 @@ function addedInteraction(interaction) {
   payload: interaction
   }
 }
-
 
 
 export { fetchingUserData, 

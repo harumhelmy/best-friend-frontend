@@ -14,6 +14,7 @@ import NewFriendForm from './modals/NewFriendForm'
 import NewImportantDate from './modals/NewImportantDate'
 import NewNoteForm from './modals/NewNoteForm'
 import NewInteractionForm from './modals/NewInteractionForm'
+import EditImportantDate from './components/EditImportantDate'
 import { connect } from 'react-redux'
 import { fetchingUserData } from './redux/actions/index'
 
@@ -53,6 +54,8 @@ class App extends React.Component {
               component={NewNoteForm} />
             <Route exact path='/friends/:friendId/newinteraction'
               component={NewInteractionForm} />
+            <Route exact path='/dates/:importantDateId/updateImportantDate'
+              component={EditImportantDate} />
             <Route exact path='/logout' />
           </Switch>
       </Fragment>
