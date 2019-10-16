@@ -58,7 +58,7 @@ const importantDatesReducer = (state = [], action) => {
     case "ADDED_IMPORTANT_DATE":
       return [...state, action.payload]
     case "DELETE_IMPORTANT_DATE":
-      return state.filter( date => date.id !== action.payload)
+      return state.filter( date => date.id !== action.payload )
     case "LOGOUT_USER":
       return []
     default:
@@ -72,6 +72,8 @@ const interactionsReducer = (state = [], action) => {
       return action.payload.interactions
     case "ADDED_INTERACTION":
       return [...state, action.payload]
+    case "DELETED_INTERACTION":
+      return state.filter( interaction => interaction.id !== action.payload )
     case "LOGOUT_USER":
       return []
     default:

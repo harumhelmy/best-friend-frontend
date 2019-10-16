@@ -1,6 +1,5 @@
 import React, {Fragment} from 'react'
 import moment from 'moment'
-import {Link} from 'react-router-dom'
 
 class ImpDateDetailHome extends React.Component { 
 
@@ -10,7 +9,7 @@ class ImpDateDetailHome extends React.Component {
 
     return (
       <Fragment>
-        <li><strong>{moment(date).format('LL')}</strong> // <strong>{moment(date).fromNow()}</strong></li>
+        <li><strong>{moment(date).format('LL')}</strong> || <strong>{moment(date).fromNow()}</strong></li>
         <p>{title}</p>
       </Fragment>
     )

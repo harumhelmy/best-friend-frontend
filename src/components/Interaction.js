@@ -1,26 +1,35 @@
-import React from 'react'
-// import {connect} from 'react-redux'
-import Moment from 'react-moment'
-// import { deletingInteraction } from '../redux/actions/index'
+import React, {Component} from 'react'
+import moment from 'moment'
+import {connect} from 'react-redux'
+import { deletingInteraction } from '../redux/actions/index'
 
-const Interaction = (props) => {
+class Interaction extends Component {
 
-  const { id, date, note, friend_id } = props.interaction
+  handleDelete = (id) => {
+    this.props.deletingInteraction(id)
+  }
 
-  return (
-    <div>
-      <li>
-        <Moment fromNow>{date}</Moment> 
-        <p>{note}</p>
-      </li>
-    </div> 
-  )
+  render() {
+
+    const { id, date, note } = this.props.interaction
+
+    return (
+      <div>
+        <li>
+          <strong>{moment(date).fromNow()}</strong> <i 
+            className='far fa-times-circle'
+            onClick={()=>this.handleDelete(id)}>{/*button to delete important date*/}</i> 
+          <p>{note}</p>
+        </li>
+      </div> 
+    )
+  }
 }
 
-// const mapDispatchToProps = (dispatch) => {
-//   return {
-//     deletingInteraction: (id, friend_id) => {dispatch(deletingInteraction(id, friend_id))}
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    deletingInteraction: (id) => {dispatch(deletingInteraction(id))}
+  }
+}
 
-export default Interaction
+export default connect(null, mapDispatchToProps)(Interaction)

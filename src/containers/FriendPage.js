@@ -65,29 +65,29 @@ class FriendPage extends React.Component {
        const { id, name, pronouns, notes, appreciation } = this.props.friend 
        return (
       <Fragment>
-      <div className='container'>
-        <section className='hero'>
-          <div className='hero-body'>
-            <h1 className='title'>
-              <EdiText type='text' 
-                  value={name}
-                  inputProps={{
-                    className: 'input'
-                  }}
-                  onSave={this.nameSave}
+        <div className='container'>
+          <section className='hero'>
+            <div className='hero-body'>
+              <h1 className='title'>
+                <EdiText type='text' 
+                    value={name}
+                    inputProps={{
+                      className: 'input'
+                    }}
+                    onSave={this.nameSave}
+                    editButtonClassName="fas fa-pencil-alt"
+                  /> 
+              </h1>
+
+                <EdiText type='text'
+                  value={pronouns}
+                  onSave={this.pronounsSave}
                   editButtonClassName="fas fa-pencil-alt"
-                /> 
-            </h1>
+                />
 
-              <EdiText type='text'
-                value={pronouns}
-                onSave={this.pronounsSave}
-                editButtonClassName="fas fa-pencil-alt"
-              />
-
-          </div>
-        </section> 
-      </div>
+            </div>
+          </section> 
+        </div>
         
         <section className='container'>
           <br/>

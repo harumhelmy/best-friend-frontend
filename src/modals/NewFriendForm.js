@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { addingNewFriend } from '../redux/actions/index'
 import { withRouter } from 'react-router-dom'
@@ -28,12 +28,12 @@ class NewFriendForm extends React.Component {
     if (name === '') {
       alert("your friend needs a name!")
     } else {
-     const data = {
-      userId: this.props.currentUser.id,
-      name: name,
-      pronouns: pronouns,
-      appreciation: appreciation
-     }
+      const data = {
+        userId: this.props.currentUser.id,
+        name: name,
+        pronouns: pronouns,
+        appreciation: appreciation
+      }
      this.props.addingNewFriend(data)
      this.props.history.push('/friends')
     }   
@@ -55,7 +55,9 @@ class NewFriendForm extends React.Component {
                 />
                 <label>pronouns</label>
                 <br/>
-                <a href= "https://www.mypronouns.org/what-and-why" target="_blank">
+                <a href= "https://www.mypronouns.org/what-and-why" 
+                  target="_blank" 
+                  rel="noopener noreferrer">
                     (why are pronouns important?)
                 </a>
 

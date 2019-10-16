@@ -1,7 +1,6 @@
-import React, {Fragment, Component} from 'react'
+import React, {Component} from 'react'
 import moment from 'moment'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";  
 import { deletingImportantDate } from '../redux/actions/index'

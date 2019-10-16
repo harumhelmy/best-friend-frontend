@@ -209,7 +209,7 @@ function deletingImportantDate(dateId){
       }
     })
     .then( res => res.json() )
-    .then( deleted => dispatch(deleteImportantDate(dateId)))
+    .then( deleted => dispatch(deletedImportantDate(dateId)))
   }
 }
 
@@ -226,7 +226,7 @@ function deletingImportantDate(dateId){
 //   }
 // }
 
-function deleteImportantDate(dateId){
+function deletedImportantDate(dateId){
   return {
     type: "DELETE_IMPORTANT_DATE",
     payload: dateId
@@ -287,15 +287,36 @@ function addedInteraction(interaction) {
   }
 }
 
+function deletingInteraction(id) {
+  return dispatch => {
+    fetch(`http://localhost:3000/interactions/${id}`, {
+      method: "DELETE",
+      headers: {
+        'Authorization': `Bearer ${token()}`
+      }
+    })
+    .then( res => res.json())
+    .then( deleted => dispatch(deletedInteraction(id)))
+  }
+}
+
+function deletedInteraction(id){
+  return {
+    type: 'DELETED_INTERACTION',
+    payload: id
+  }
+}
+
 
 export { fetchingUserData, 
   userPostFetch,
   userLoginFetch,
   loggingOut,
-  addingNewFriend, 
+  addingNewFriend,
+  deletingFriend, 
+  updatingFriend, 
   addingNewImportantDate,
   deletingImportantDate,
   addingNewNote, 
   addingNewInteraction, 
-  deletingFriend, 
-  updatingFriend } 
+  deletingInteraction }  
