@@ -21,7 +21,7 @@ const Home = (props) => {
                 <div className='box'>
                   <h3>important friend dates coming up soon:</h3>
                   {props.importantDates.map( date =>  
-                    <DateDetail date={date}/>)}
+                    <DateDetail key={date.id} date={date}/>)}
                 </div>
                 :
                 null
