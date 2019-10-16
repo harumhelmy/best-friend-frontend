@@ -22,14 +22,21 @@ class NewFriendForm extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    const data = {
+    
+    const { name, pronouns, appreciation } = this.state 
+
+    if (name === '') {
+      alert("your friend needs a name!")
+    } else {
+     const data = {
       userId: this.props.currentUser.id,
-      name: this.state.name,
-      pronouns: this.state.pronouns,
-      appreciation: this.state.appreciation
-    }
-    this.props.addingNewFriend(data)
-    this.props.history.push('/friends')
+      name: name,
+      pronouns: pronouns,
+      appreciation: appreciation
+     }
+     this.props.addingNewFriend(data)
+     this.props.history.push('/friends')
+    }   
   }
 
   render() {

@@ -59,22 +59,16 @@ class ImportantDateDetail extends Component {
 
           <p>{title}</p>
           <p>{note}</p>
-
            
           <br />
 
-          <Link to={`/friends/${this.props.friend.id}/newimpdate`}
-            className='button is-normal'
-            style={{textDecoration: 'none'}}> add a new important date 
-          </Link>
-
         </li>
         :
-        <Fragment>
+        <div className='container'>
           <h3>edit this date</h3>
   
           <form onSubmit={this.onSubmit}>
-              <label>name</label>
+              <label>title</label>
               <input className='input'
                 type="text" 
                 name="title"
@@ -100,7 +94,7 @@ class ImportantDateDetail extends Component {
               />
 
               <button type='submit' 
-                className='ui button'> Submit
+                className='ui button'> save
               </button>
               <button className='button is-normal'
                 style={{textDecoration: 'none'}}
@@ -108,8 +102,9 @@ class ImportantDateDetail extends Component {
               <br/>
 
           </form>
-        </Fragment>
+        </div>
         }
+  
       </div> 
     )
   }

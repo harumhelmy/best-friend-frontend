@@ -121,6 +121,10 @@ class FriendPage extends React.Component {
                   ) 
                   : null
                 }
+                <Link to={`/friends/${this.props.friend.id}/newimpdate`}
+                  className='button is-normal'
+                  style={{textDecoration: 'none'}}> add a new important date 
+                </Link>
               </div>
 
               <br />
