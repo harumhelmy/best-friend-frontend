@@ -20,6 +20,8 @@ class ImportantDateDetail extends Component {
 
   componentDidMount(){
     const {date, title, note} = this.props.date
+    
+    // sets local state to populate edit form 
     this.setState({
       ...this.state,
       date: date,
@@ -32,14 +34,21 @@ class ImportantDateDetail extends Component {
     this.props.deletingImportantDate(dateId)
   }
 
+  // shows and hides the form to update an important date
   toggleUpdateForm = () => {
     this.setState({
       updateFormShown: !this.state.updateFormShown
     })
   }
 
+  onUpdateFormChange = (event) => {
+    this.setState({
+      [event.target.name]: [event.target.value]
+    })
+  }
+
   // handleUpdate = (dateId) => {
-  //   // this.props.updatingImportantDate(dateId)
+  //   this.props.updatingImportantDate(dateId)
   // }
 
   render(){
@@ -64,7 +73,7 @@ class ImportantDateDetail extends Component {
         </li>
         :
         <div className='container'>
-          <h3>edit this date</h3>
+          <h3>editing important date</h3>
   
           <form onSubmit={this.onSubmit}>
               <label>title</label>
@@ -73,7 +82,7 @@ class ImportantDateDetail extends Component {
                 name="title"
                 placeholder="what's happening?" 
                 value={this.state.title}
-                onChange={this.handleChange}
+                onChange={this.onUpdateFormChange}
               />
 
               <label>date</label>
@@ -89,7 +98,7 @@ class ImportantDateDetail extends Component {
               <textarea className="textarea"
                 placeholder="any notes on this date?"
                 name="note"
-                onChange={this.handleChange}
+                onChange={this.onUpdateFormChange}
               />
 
               <button type='submit' 
