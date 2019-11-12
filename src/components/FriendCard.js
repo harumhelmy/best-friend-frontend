@@ -17,8 +17,8 @@ class FriendCard extends React.Component {
       ...interaction,
       date: new Date(interaction.date)
     }))
-    copy.sort((a,b) => a.date - b.date)
-    return copy[copy.length-1]
+    copy.sort((a,b) => a.date - b.date) 
+    return copy[copy.length-1] 
   }
 
   render(){

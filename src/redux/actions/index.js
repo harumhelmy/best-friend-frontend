@@ -213,6 +213,25 @@ function deletingImportantDate(dateId){
   }
 }
 
+function updatingImportantDate(data){
+  return dispatch => {
+    fetch(`http://localhost:3000/important_dates/par${data.dateId}`, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token()}`
+      },
+      body: JSON.stringify({
+        date: data.date,
+        title: data.title,
+        note: data.note,
+        id: data.dateId
+      })
+    })
+    .then( res => res.json() )
+    .then( returnedData => console.log(returnedData))
+  }
+}
+
 // function updatingImportantDate(dateId){
 //   return dispatch => {
 //     fetch(fetch(`http://localhost:3000/important_dates/${dateId}`, {
@@ -316,6 +335,7 @@ export { fetchingUserData,
   deletingFriend, 
   updatingFriend, 
   addingNewImportantDate,
+  updatingImportantDate,
   deletingImportantDate,
   addingNewNote, 
   addingNewInteraction, 

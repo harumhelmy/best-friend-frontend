@@ -3,7 +3,7 @@ import moment from 'moment'
 import {connect} from 'react-redux'
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";  
-import { deletingImportantDate } from '../redux/actions/index'
+import { deletingImportantDate, updatingImportantDate } from '../redux/actions/index'
 
 class ImportantDateDetail extends Component {
   
@@ -30,11 +30,7 @@ class ImportantDateDetail extends Component {
     })
   }
 
-  handleDelete = (dateId) => {
-    this.props.deletingImportantDate(dateId)
-  }
-
-  // shows and hides the form to update an important date
+  // shows/hides the form to update an important date
   toggleUpdateForm = () => {
     this.setState({
       updateFormShown: !this.state.updateFormShown
@@ -43,13 +39,28 @@ class ImportantDateDetail extends Component {
 
   onUpdateFormChange = (event) => {
     this.setState({
-      [event.target.name]: [event.target.value]
+      [event.target.name]: event.target.value
     })
   }
 
-  // handleUpdate = (dateId) => {
-  //   this.props.updatingImportantDate(dateId)
-  // }
+  handleUpdate = (event, dateId) => {
+    event.preventDefault()
+
+    const date = this.state.date
+    const title = this.state.title
+    const note = this.state.note 
+
+    if (date !== '' | title !== '') {
+      const data = {date, title, note, dateId}
+      this.props.updatingImportantDate(data) // dispatches redux action 
+    } else {
+      alert("Oop, the date and title field can't be blank!")
+    }
+  }
+
+  handleDelete = (dateId) => {
+    this.props.deletingImportantDate(dateId)
+  }
 
   render(){
     const {id, date, title, note} = this.props.date
@@ -75,7 +86,7 @@ class ImportantDateDetail extends Component {
         <div className='container'>
           <h3>editing important date</h3>
   
-          <form onSubmit={this.onSubmit}>
+          <form onSubmit={(event)=>this.handleUpdate(event, id)}>
               <label>title</label>
               <input className='input'
                 type="text" 
@@ -89,7 +100,7 @@ class ImportantDateDetail extends Component {
               <br />
               <DatePicker name="date"
                 selected={this.state.date}
-                onChange={this.handleDateChange}
+                onChange={this.onUpdateFormChange}
               />
 
               <br />
@@ -98,6 +109,7 @@ class ImportantDateDetail extends Component {
               <textarea className="textarea"
                 placeholder="any notes on this date?"
                 name="note"
+                value={this.state.note}
                 onChange={this.onUpdateFormChange}
               />
 
@@ -121,7 +133,7 @@ class ImportantDateDetail extends Component {
 const mapDispatchToProps = dispatch => {
   return {
     deletingImportantDate: dateId => {dispatch(deletingImportantDate(dateId))},
-    // updatingImportantDate: dateId => {dispatch(updatingImportantDate(dateId))}
+    updatingImportantDate: data => {dispatch(updatingImportantDate(data))}
   }
 }
 
