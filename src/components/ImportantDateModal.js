@@ -10,11 +10,10 @@ const ImportantDateDetail = (props) => {
       <div className='modal-background'></div>
       <div className='modal-card'>
         <header className='modal-card-head'>
-          <p className='modal-card-title'>{props.dateTitle}</p>
+          <p className='modal-card-title'>{props.dateTitle} with <Link to={`/friends/${props.dateFriend.id}`}>{props.dateFriend.name}</Link></p>
         </header>
         <div className='modal-card-body'>
           <p>{props.dateNote}</p>
-          <p>(in case the event detail wasn't clear, this calendar event is about <Link to={`/friends/${props.dateFriend.id}`}>{props.dateFriend.name}</Link>)</p>
           <button onClick={props.unshowModal}>close</button>
         </div>
       </div>

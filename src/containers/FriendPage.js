@@ -172,17 +172,21 @@ class FriendPage extends React.Component {
             onClick={()=>this.props.deletingFriend(id)}>
               delete this friend
           </button>
+          <br />
+
+          <Link to={`/friends`}
+              className='button is-normal'
+              style={{ textDecoration: 'none' }}>Back to friends list
+          </Link>
         </section> 
       </Fragment>
        )
      }
    }
-
+   
     return (
       <div>
         {friendPage()}
-        <br/>
-        <Link to='/friends'>Back to friends list</Link>
       </div>
     )
   }

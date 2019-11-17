@@ -215,16 +215,16 @@ function deletingImportantDate(dateId){
 
 function updatingImportantDate(data){
   return dispatch => {
-    fetch(`http://localhost:3000/important_dates/par${data.dateId}`, {
+    fetch(`http://localhost:3000/important_dates/${data.dateId}`, {
       method: 'PATCH',
       headers: {
+        'content-type': 'application/json',
         'Authorization': `Bearer ${token()}`
       },
       body: JSON.stringify({
         date: data.date,
         title: data.title,
         note: data.note,
-        id: data.dateId
       })
     })
     .then( res => res.json() )

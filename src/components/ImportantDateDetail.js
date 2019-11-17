@@ -43,6 +43,12 @@ class ImportantDateDetail extends Component {
     })
   }
 
+  handleDateChange = (date) => {
+    this.setState({
+      date: date
+    })
+  }
+
   handleUpdate = (event, dateId) => {
     event.preventDefault()
 
@@ -100,7 +106,7 @@ class ImportantDateDetail extends Component {
               <br />
               <DatePicker name="date"
                 selected={this.state.date}
-                onChange={this.onUpdateFormChange}
+                onChange={this.handleDateChange}
               />
 
               <br />
@@ -118,9 +124,12 @@ class ImportantDateDetail extends Component {
               </button>
               <button className='button is-normal'
                 style={{textDecoration: 'none'}}
-                onClick={()=>this.toggleUpdateForm()}>cancel</button>
+                type='button' /* this is here to explicitly tell 
+                the browser this button is not a submit button 
+                and avoid the console error "Form submission canceled because the form is not connected" */
+                onClick={()=>this.toggleUpdateForm()}>cancel
+              </button>
               <br/>
-
           </form>
         </div>
         }
