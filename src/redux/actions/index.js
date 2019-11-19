@@ -228,7 +228,14 @@ function updatingImportantDate(data){
       })
     })
     .then( res => res.json() )
-    .then( returnedData => console.log(returnedData))
+    .then( date => dispatch(updatedImportantDate(date)))
+  }
+}
+
+function updatedImportantDate(date){
+  return {
+    type: "UPDATE_IMPORTANT_DATE",
+    payload: date
   }
 }
 

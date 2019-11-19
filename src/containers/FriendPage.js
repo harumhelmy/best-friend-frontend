@@ -165,15 +165,14 @@ class FriendPage extends React.Component {
                   style={{textDecoration: 'none'}}> add a new note about {name} </Link>
               </div>
 
+              <button className='button is-small is-warning'
+                   onClick={() => this.props.deletingFriend(id)}>
+                   delete this friend
+              </button>
+
             </div>
           </div>
-                  
-          <button className='button is-small is-warning' 
-            onClick={()=>this.props.deletingFriend(id)}>
-              delete this friend
-          </button>
-          <br />
-
+         
           <Link to={`/friends`}
               className='button is-normal'
               style={{ textDecoration: 'none' }}>Back to friends list
@@ -183,7 +182,7 @@ class FriendPage extends React.Component {
        )
      }
    }
-   
+
     return (
       <div>
         {friendPage()}

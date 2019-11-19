@@ -58,7 +58,8 @@ class ImportantDateDetail extends Component {
 
     if (date !== '' | title !== '') {
       const data = {date, title, note, dateId}
-      this.props.updatingImportantDate(data) // dispatches redux action 
+      this.props.updatingImportantDate(data) // dispatches redux action
+      this.toggleUpdateForm() 
     } else {
       alert("Oop, the date and title field can't be blank!")
     }
